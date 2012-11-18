@@ -15,12 +15,12 @@ end
 
 gem 'jquery-rails'
 
-group :test, :development do
-  gem 'rspec-rails', '~> 2.12'
-end
-
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails' , :require => false
   gem 'capybara'
   gem 'database_cleaner'
+end
+
+group :test, :development do
+  gem 'rspec-rails', '~> 2.12'
 end
