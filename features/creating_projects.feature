@@ -9,3 +9,5 @@ Feature: Creating projects
     And I fill in "Name" with "Time Tracker"
     And I press "Create Project"
     Then I should see "Project has been created."
+    And I should be on the project page for "Time Tracker"
+    And I should see "Time Tracker - Projects - LSG Tracker"
