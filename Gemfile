@@ -20,6 +20,7 @@ group :test do
   gem 'cucumber-rails' , :require => false
   gem 'capybara' , "~> 1.1.3"
   gem 'database_cleaner'
+  gem 'factory_girl'
 end
 
 group :test, :development do
