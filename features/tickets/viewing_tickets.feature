@@ -4,12 +4,15 @@ Feature: Viewing tickets
   I want to be able to see them on the project's page
 
   Background:
-    Given there is a project called "Time Tracker"
-    And that project has a ticket:
+    Given there are the following users:
+      | email            | password |
+      | user@example.com | password |
+    And there is a project called "Time Tracker"
+    And "user@example.com" has created a ticket for this project:
       | title         | description                    |
       | Make it shiny | Gradients Starbursts! Oh My    |
     And there is a project called "Internet Explorer"
-    And that project has a ticket:
+    And "user@example.com" has created a ticket for this project:
       | title         | description                    |
       | Standards 101 | This is not a joke             |
     And I am on the homepage

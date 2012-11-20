@@ -4,8 +4,12 @@ Feature: Deleting tickets
   I want to press a button and make them go away
 
   Background:
+    Given there are the following users:
+      | email            | password |
+      | user@example.com | password |
+    And I am signed in as them
     Given there is a project called "Time Tracker"
-    And that project has a ticket:
+    And "user@example.com" has created a ticket for this project:
       | title         | description                    |
       | Make it shiny | Gradients Starbursts! Oh My    |
     Given I am on the homepage
