@@ -21,6 +21,7 @@ group :test do
   gem 'capybara' , "~> 1.1.3"
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'email_spec', "~> 1.2.1"
 end
 
 group :test, :development do
