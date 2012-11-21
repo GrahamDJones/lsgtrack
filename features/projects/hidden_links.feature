@@ -21,3 +21,33 @@ Feature: Hidden Links
   Scenario: New project link is show to admins
     Given I am signed in as "admin@example.com"
     Then I should see the "New Project" link
+
+  Scenario: Edit project link is hidden for non-signed-in users
+    Given I am on the homepage
+    When I follow "Time Tracker"
+    Then I should not see the "Edit Project" link
+
+  Scenario: Edit project link is hidden for standard users
+    Given I am signed in as "user@example.com"
+    When I follow "Time Tracker"
+    Then I should not see the "Edit Project" link
+
+  Scenario: Edit project link is shown to admins
+    Given I am signed in as "admin@example.com"
+    When I follow "Time Tracker"
+    Then I should see the "Edit Project" link
+
+  Scenario: Delete project link is hidden for non-signed-in users
+    Given I am on the homepage
+    When I follow "Time Tracker"
+    Then I should not see the "Delete Project" link
+
+  Scenario: Delete project link is hidden for standard users
+    Given I am signed in as "user@example.com"
+    When I follow "Time Tracker"
+    Then I should not see the "Delete Project" link
+
+  Scenario: Delete project link is shown to admins
+    Given I am signed in as "admin@example.com"
+    When I follow "Time Tracker"
+    Then I should see the "Delete Project" link
