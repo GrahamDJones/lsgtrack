@@ -5,13 +5,10 @@ Feature: Editing a user
 
 Background:
   Given there are the following users:
-    | email             | password | admin |
-    | admin@example.com | password | true  |
-  And I am signed in as them
-
-  Given there are the following users:
-    | email             | password |
-    | user@example.com  | password |
+    | email             | password | admin  |
+    | admin@example.com | password | true   |
+    | user@example.com  | password | false  |
+  And I am signed in as "admin@example.com"
   Given I am on the homepage
   When I follow "Admin"
   And I follow "Users"
