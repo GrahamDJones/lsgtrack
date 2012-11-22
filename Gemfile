@@ -28,4 +28,5 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.12'
 end
 
-gem 'devise', '~> 1.4.3'
+gem 'devise', "~> 1.4.3"
+gem 'cancan', "~> 1.6.8"

@@ -9,6 +9,7 @@ Feature: Creating tickets
       | email            | password |
       | user@example.com | password |
     And "user@example.com" can view the "Internet Explorer" project
+    And "user@example.com" can create tickets in the "Internet Explorer" project
     And I am signed in as them
     And I am on the homepage
     When I follow "Internet Explorer"
