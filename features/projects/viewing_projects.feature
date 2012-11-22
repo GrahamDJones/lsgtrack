@@ -10,8 +10,10 @@ Feature: Viewing projects
     And I am signed in as them
     And there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
+    And there is a project called "Internet Explorer"
 
   Scenario: Listing all projects
     And I am on the homepage
+    Then I should not see "Internet Explorer"
     When I follow "Time Tracker"
     Then I should be on the project page for "Time Tracker"
