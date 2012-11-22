@@ -12,9 +12,10 @@
           <tr class='<%= cycle("odd", "even") %>'>
             <td><%= project.name %></td>
             <% permissions.each do |name, text| %>
+                <% ability_can = @ability.can?(name.to_sym, project) %>
                 <td>
                   <%= check_box_tag "permissions[#{project.id}][#{name}]",
-                                    @ability.can?(name.to_sym, project) %>
+                                    ability_can, ability_can.to_s == "true" %>
                 </td>
             <% end %>
           </tr>
