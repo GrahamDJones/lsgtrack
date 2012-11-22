@@ -1,0 +1,3 @@
+The blink tag can blink faster if you tell it to.
+There is a speed setting if you can find it.
+
