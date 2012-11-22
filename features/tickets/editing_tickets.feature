@@ -10,6 +10,7 @@ Feature: Editing tickets
     And I am signed in as them
     Given there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
+    And "user@example.com" can edit tickets in the "Time Tracker" project
     And "user@example.com" has created a ticket for this project:
       | title         | description                    |
       | Make it shiny | Gradients Starbursts! Oh My    |
