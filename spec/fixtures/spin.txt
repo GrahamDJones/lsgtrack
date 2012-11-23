@@ -1,0 +1,3 @@
+The blink tag can spin if you tell it to.
+There is a rotational speed setting if you can find it.
+
