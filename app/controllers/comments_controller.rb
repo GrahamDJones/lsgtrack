@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to [@ticket.project, @ticket], notice: "Comment has been created."
     else
-      @states = State.all
       flash[:alert] = "Comment has not been created."
       render template: "tickets/show"
     end
