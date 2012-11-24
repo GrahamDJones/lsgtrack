@@ -17,6 +17,7 @@ Feature: Assigning permissions
     And I follow "Users"
     And I follow "user@example.com"
     And I follow "Permissions"
+    Given there is a state called "Open"
 
   Scenario: Viewing a project
     When I check "View" for "Time Tracker"
@@ -63,3 +64,17 @@ Feature: Assigning permissions
     And I follow "Shiny!"
     And I follow "Delete"
     Then I should see "Ticket has been deleted."
+
+  Scenario: Changing states for a ticket
+    When I check "View" for "Time Tracker"
+    And I check "Change States" for "Time Tracker"
+    And I press "Update"
+    And I follow "Sign out"
+    Given I am signed in as "user@example.com"
+    When I follow "Time Tracker"
+    And I follow "Shiny!"
+    And I fill in "Text" with "Opening this ticket"
+    And I select "Open" from "State"
+    And I press "Create Comment"
+    Then I should see "Comment has been created"
+    And I should see "Open" within "#ticket .state"
