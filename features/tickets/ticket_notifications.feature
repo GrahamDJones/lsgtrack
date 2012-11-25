@@ -26,6 +26,9 @@ Feature: Ticket notifications
     Then "alice@example.com" should receive an email
     When "alice@example.com" opens the email
     Then they should see "updated the Release date ticket" in the email body
+    And the email should contain 2 parts
+    And there should be a part with content type "text/plain"
+    And there should be a part with content type "text/html"
     And they should see "[LSG Tracker] Time Tracker - Release date" in the email subject
-    Then they click the first link in the email
+    Then they follow "view this ticket on line here" in the email
     Then I should see "Release date" within "#ticket h2"
