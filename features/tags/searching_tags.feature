@@ -15,8 +15,11 @@ Feature: Searching tags
       | title | description    | tags        | state |
       | Tag!  | Hey! You're it | iteration_1 | Open  |
     And "user@example.com" has created a ticket for this project:
-      | title   | description         | tags        | state  |
-      | Tagged! | Hey! No you are not | iteration_2 | Closed |
+      | title   | description         | tags             | state  |
+      | Tagged! | Hey! No you are not | iteration_2 find | Closed |
+    And "user@example.com" has created a ticket for this project:
+      | title  | description     | tags | state |
+      | Found! | Hey! I am found | find | Open  |
     Given I am on the homepage
     And I follow "Time Tracker" within "#projects"
 
@@ -25,10 +28,19 @@ Feature: Searching tags
     And I press "Search"
     Then I should see "Tag!"
     And I should not see "Tagged!"
+    And I should not see "Found!"
 
   Scenario: Finding by state
     When I fill in "Search" with "state:Open"
     And I press "Search"
     Then I should see "Tag!"
+    And I should see "Found!"
     And I should not see "Tagged!"
+
+  Scenario: Finding by state or has tag
+    When I fill in "Search" with "state:Open tag:find"
+    And I press "Search"
+    Then I should see "Found!"
+    And I should not see "Tag!"
+    And I should see "Tagged!"
 
