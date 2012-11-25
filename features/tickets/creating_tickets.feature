@@ -49,6 +49,7 @@ Feature: Creating tickets
 #    When I follow "speed.txt"
 
   Scenario: Creating a ticket with tags
+    Given "user@example.com" can tag the "Internet Explorer" project
     When I fill in "Title" with "Non-standards compliance"
     And I fill in "Description" with "My pages are ugly!"
     And I fill in "Tags" with "browser visual"

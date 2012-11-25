@@ -40,19 +40,28 @@ describe TicketsController do
       end
 
       it "cannot edit a ticket without permission" do
-        get :edit, { project_id: project.id, id: ticket.id }
+        get :edit, {project_id: project.id, id: ticket.id}
         cannot_update_tickets!
       end
 
       it "cannot update a ticket without permission" do
-        put :update, { project_id: project.id, id: ticket.id, ticket: {} }
+        put :update, {project_id: project.id, id: ticket.id, ticket: {}}
         cannot_update_tickets!
       end
 
       it "cannot delete a ticket without permission" do
-        delete :destroy, { project_id: project.id, id: ticket.id }
+        delete :destroy, {project_id: project.id, id: ticket.id}
         response.should redirect_to(project)
         flash[:alert].should eql("You cannot delete tickets from this project.")
+      end
+
+      it "can create tickets, but not tag them" do
+        Permission.create(user: user, thing: project, action: "create tickets")
+        post :create, ticket: {title: "New ticket!",
+                               description: "Really new one"},
+             project_id: project.id,
+             tags: "these are tags"
+        Ticket.last.tags.should be_empty
       end
 
     end
