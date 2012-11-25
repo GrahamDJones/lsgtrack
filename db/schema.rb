@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124221335) do
+ActiveRecord::Schema.define(:version => 20121125190957) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(:version => 20121124221335) do
 
   add_index "tags_tickets", ["tag_id"], :name => "index_tags_tickets_on_tag_id"
   add_index "tags_tickets", ["ticket_id"], :name => "index_tags_tickets_on_ticket_id"
+
+  create_table "ticket_watchers", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "ticket_id"
+  end
+
+  add_index "ticket_watchers", ["ticket_id"], :name => "index_ticket_watchers_on_ticket_id"
+  add_index "ticket_watchers", ["user_id"], :name => "index_ticket_watchers_on_user_id"
 
   create_table "tickets", :force => true do |t|
     t.string   "title"
