@@ -31,3 +31,4 @@ end
 gem 'devise', "~> 1.4.3"
 gem 'cancan', "~> 1.6.8"
 gem 'paperclip', "~> 3.3.1"
+gem 'searcher', "~> 0.0.6"
