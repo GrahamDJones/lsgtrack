@@ -44,4 +44,16 @@ Feature: Creating comments
     When I follow "Change a ticket's state"
     Then I should not see the "#comment_state_id" element
 
+    Scenario: Adding a tag to a ticket
+      Given "user@example.com" can change states on the "LSG Tracker" project
+      When I follow "Change a ticket's state"
+      Then I should not see "bug" within "#ticket #tags"
+      When I fill in "Text" with "Adding the bug tag"
+      And I fill in "Tags" with "bug"
+      And I press "Create Comment"
+      Then I should see "Comment has been created"
+      Then I should see "bug" within "#ticket #tags"
+
+
+
 
