@@ -22,5 +22,6 @@
 
 # Ignore files with secret info in them
 config/initializers/mail.rb
+config/initializers/secret_token.rb
 features/gmail.feature
 
