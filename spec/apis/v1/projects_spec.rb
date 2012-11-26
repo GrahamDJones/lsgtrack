@@ -6,15 +6,14 @@ describe "/api/v1/projects", type: :api do
 
   before do
     @project = FactoryGirl.create(:project)
-    @project2 = FactoryGirl.create(:project, name: "Project Two")
+    @project2 = FactoryGirl.create(:project, name: "Access Denied")
     user.permissions.create!(action: "view", thing: @project)
-    user.permissions.create!(action: "view", thing: @project2)
   end
 
   context "projects viewable by this user" do
     let(:url) { "/api/v1/projects" }
     it "json" do
-      get "#{url}.json"
+      get "#{url}.json", :token => token
       projects_json = Project.for(user).order(:name).to_json
       response.body.should eql(projects_json)
       response.status.should eql(200)
@@ -22,6 +21,9 @@ describe "/api/v1/projects", type: :api do
       projects.any? do |p|
         p["project"]["name"] == @project.name
       end.should be_true
+      projects.any? do |p|
+        p["project"]["name"] == @project2.name
+      end.should be_false
     end
   end
 
