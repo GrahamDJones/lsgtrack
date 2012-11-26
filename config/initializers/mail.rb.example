@@ -1,0 +1,7 @@
+ActionMailer::Base.smtp_settings = {
+    user_name: "example@example.com",
+    password: "example",
+    address: "smtp.example.com",
+    port: 465,
+    tls: true
+}

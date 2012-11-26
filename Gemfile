@@ -26,6 +26,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12'
+  gem 'gmail'
 end
 
 gem 'devise', "~> 1.4.3"

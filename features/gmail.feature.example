@@ -1,0 +1,32 @@
+Feature: Gmail
+  In order to send real world emails
+  As the application
+  I want to ensure that my configuration is correct
+
+  Background:
+    Given there are the following users:
+      | email                 | password   |
+      | alice@example.com     | password   |
+      | example@example.com | example |
+    And Action Mailer delivers via SMTP
+
+    Given there is a project called "Time Tracker"
+    And "alice@example.com" can view the "Time Tracker" project
+    And "exampler@example.com" can view the "Time Tracker" project
+    And "example@example.com" has created a ticket for this project:
+      | title        | description      |
+      | Release date | TBA very shortly |
+
+  Scenario:  Receiving a real-world email
+    Given I am signed in as "alice@example.com"
+    Given I am on the homepage
+    When I follow "Time Tracker"
+    And I follow "Release date"
+    And I fill in "Text" with "Posting a comment"
+    And I press "Create Comment"
+    Then I should see "Comment has been created"
+
+    When I log into gmail with:
+      | username              | password   |
+      | example@example.com | example |
+    Then there should be an email from lsg.tracker in my inbox
