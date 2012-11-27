@@ -25,7 +25,7 @@ group :test do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.12'
+  gem 'rspec-rails', "~> 2.4"
   gem 'gmail'
 end
 
