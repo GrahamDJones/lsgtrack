@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   scope :readable_by, lambda { |user|
     joins(:permissions).where(permissions: {action: "view", user_id: user.id})
   }
-
+  alias_attribute(:title, :name) # for API V2 experiment
   def self.for(user)
     user.admin? ? Project.order(:name) : Project.readable_by(user).order(:name)
   end
