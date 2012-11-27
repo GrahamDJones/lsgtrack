@@ -88,12 +88,6 @@ describe "/api/v1/projects", type: :api do
     it "successful JSON" do
       @project.name.should eql("Time Tracker")
       put "#{url}.json", token: token, project: { name: "Not Time Tracker" }
-      print "code: #{response.code.inspect}\nbody: #{response.body.inspect}"
-      #TODO explain this very odd test result
-      # What we should get is:
-      #response.status.should eql(200)
-      #response.body.should eql("{}")
-      # What we actually get is:
       response.status.should eql(204)
       response.body.should eql("")
 
@@ -121,10 +115,6 @@ describe "/api/v1/projects", type: :api do
     let(:url) { "/api/v1/projects/#{@project.id}" }
     it "JSON" do
       delete "#{url}.json", token: token
-      #TODO explain this very odd test result
-      # What we should get is:
-      #response.status.should eql(200)
-      # What we actually get is:
       response.status.should eql(204)
     end
 
