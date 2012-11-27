@@ -12,6 +12,7 @@ describe "/api/v1/projects", type: :api do
 
   context "projects viewable by this user" do
     let(:url) { "/api/v1/projects" }
+
     it "json" do
       get "#{url}.json", token: token
       projects_json = Project.for(user).to_json
@@ -25,6 +26,7 @@ describe "/api/v1/projects", type: :api do
         p["project"]["name"] == @project2.name
       end.should be_false
     end
+
     it "XML" do
       get "#{url}.xml", token: token
       response.body.should eql(Project.for(user).to_xml)
@@ -33,4 +35,24 @@ describe "/api/v1/projects", type: :api do
     end
   end
 
+  context "creating a project" do
+    let(:url) { "/api/v1/projects" }
+
+    it "successful json" do
+      post "#{url}.json", token: token, project: {name: "Inspector"}
+      project = Project.find_by_name("Inspector")
+      route = "/api/v1/projects/#{project.id}"
+
+      response.status.should eql(201)
+      response.headers["Location"].should eql(route)
+      response.body.should eql(project.to_json)
+    end
+
+    it "unsuccessful json" do
+      post "#{url}.json", token: token, project: {}
+
+      response.status.should eql(422)
+      response.body.should eql({"errors" => {"name" => ["can't be blank"]}}.to_json)
+    end
+  end
 end
