@@ -8,6 +8,6 @@ class Project < ActiveRecord::Base
   }
 
   def self.for(user)
-    user.admin? ? Project : Project.readable_by(user)
+    user.admin? ? Project.order(:name) : Project.readable_by(user).order(:name)
   end
 end
