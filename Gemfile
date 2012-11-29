@@ -29,6 +29,11 @@ group :test, :development do
   gem 'gmail'
 end
 
+group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+end
+
 gem 'devise', "~> 1.4.3"
 gem 'cancan', "~> 1.6.8"
 gem 'paperclip', "~> 3.3.1"
