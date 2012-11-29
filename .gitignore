@@ -25,3 +25,5 @@ config/initializers/mail.rb
 config/initializers/secret_token.rb
 features/gmail.feature
 
+# deploying on a different platform, so cannot use Gemfile.lock
+Gemfile.lock

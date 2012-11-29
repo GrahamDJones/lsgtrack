@@ -21,13 +21,14 @@ test: &test
 
 production:
   adapter: postgresql
-  database: db/lsgtrack_production
-  username: postgres
-  password: admin
-  host: localhost
-  encoding: UTF8
-  pool: 5
-  timeout: 5000
+  database: lsgtracker.com
+#  username: postgres
+#  password: admin
+#  host: localhost
+#  encoding: UTF8
+#  pool: 5
+#  timeout: 5000
+  min_messages: warning
 
 cucumber:
   <<: *test

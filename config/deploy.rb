@@ -4,7 +4,7 @@ require 'rvm/capistrano'
 set :rvm_type, :system
 
 set :application, "lsgtracker"
-set :repository,  "git://github.com/GrahamDJones/lsgtrack.git"
+set :repository, "git://github.com/GrahamDJones/lsgtrack.git"
 # for branches (ie, not master):
 # set :branch, "branch_name"
 
@@ -17,9 +17,9 @@ set :use_sudo, false
 set :keep_releases, 5
 
 
-role :web, "localhost"                          # Your HTTP server, Apache/etc
-role :app, "localhost"                          # This may be the same as your `Web` server
-role :db,  "localhost", :primary => true # This is where Rails migrations will run
+role :web, "localhost" # Your HTTP server, Apache/etc
+role :app, "localhost" # This may be the same as your `Web` server
+role :db, "localhost", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 set :port, 2222
 
@@ -31,9 +31,21 @@ set :port, 2222
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
-   task :start do ; end
-   task :stop do ; end
-   task :restart, :roles => :app, :except => { :no_release => true } do
-     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-   end
+  task :start do
+    ;
+  end
+  task :stop do
+    ;
+  end
+  task :restart, :roles => :app, :except => {:no_release => true} do
+    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
+  end
 end
+
+task :symlink_secret_files do
+  run "rm #{release_path}/config/database.yml"
+  run "ln -sfn #{shared_path}/secret_files/database.yml #{release_path}/config/database.yml"
+  run "ln -sfn #{shared_path}/secret_files/mail.rb #{release_path}/config/initializers/mail.rb"
+  run "ln -sfn #{shared_path}/secret_files/secret_token.rb #{release_path}/config/initializers/secret_token.rb"
+end
+after "bundle:install", "symlink_secret_files"
