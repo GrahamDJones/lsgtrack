@@ -2,6 +2,7 @@ require 'bundler/capistrano'
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require 'rvm/capistrano'
 set :rvm_type, :system
+set :bundle_flags,    "--quiet"
 
 set :application, "lsgtracker"
 set :repository, "git://github.com/GrahamDJones/lsgtrack.git"
