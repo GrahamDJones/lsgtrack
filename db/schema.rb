@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127185912) do
+ActiveRecord::Schema.define(:version => 20121130161803) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20121127185912) do
     t.integer  "request_count",                         :default => 0
   end
 
+  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
