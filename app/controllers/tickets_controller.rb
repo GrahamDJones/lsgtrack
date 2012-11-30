@@ -44,7 +44,7 @@ class TicketsController < ApplicationController
   end
 
   def search
-    @tickets = @project.tickets.search(params[:search])
+    @tickets = @project.tickets.search(params[:search]).page(params[:page])
     render "projects/show"
   end
 

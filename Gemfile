@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 
 gem 'pg'
+gem 'kaminari'
+gem 'devise', "~> 1.4.3"
+gem 'cancan', "~> 1.6.8"
+gem 'paperclip', "~> 3.3.1"
+gem 'searcher', "~> 0.0.6"
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required
@@ -14,8 +20,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara', "~> 1.1.3"
@@ -24,20 +28,16 @@ group :test do
   gem 'email_spec', "~> 1.2.1"
 end
 
-group :test, :development do
-  gem 'rspec-rails', "~> 2.4"
-  gem 'gmail'
-end
-
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
 end
 
-gem 'devise', "~> 1.4.3"
-gem 'cancan', "~> 1.6.8"
-gem 'paperclip', "~> 3.3.1"
-gem 'searcher', "~> 0.0.6"
+group :test, :development do
+  gem 'rspec-rails', "~> 2.4"
+  gem 'gmail'
+end
+
 group :production do
   gem 'therubyracer', :platforms => :ruby
 end
