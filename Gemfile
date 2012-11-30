@@ -9,6 +9,8 @@ gem 'cancan', "~> 1.6.8"
 gem 'paperclip', "~> 3.3.1"
 gem 'searcher', "~> 0.0.6"
 gem 'jquery-rails'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 
 # Gems used only for assets and not required
