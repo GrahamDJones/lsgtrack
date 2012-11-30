@@ -10,6 +10,13 @@ When /^I check "(.*?)" for "(.*?)"$/ do |permission, name|
   steps(%Q{When I check "#{field_id}"})
 end
 
+And /^"(.*?)" can view all projects$/ do |user|
+  Project.all.each do |project|
+    create_permission(user, project, "view")
+  end
+end
+
+
 def create_permission(email, object, action)
   Permission.create!(:user => User.find_by_email!(email),
                      :thing => object,

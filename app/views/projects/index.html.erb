@@ -4,6 +4,7 @@
 <% end %>
 <br/>
 <div>
+  <%= paginate @projects %>
 <ul id="projects">
   <% @projects.each do |project| %>
       <li><%= link_to project.name, project %></li>
