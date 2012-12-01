@@ -1,15 +1,16 @@
 <% @title = title(@project.name, "Projects") %>
 <h2><%= @project.name %></h2>
-
-<%= admins_only do %>
-    <%= link_to 'Edit Project', edit_project_path(@project) %>
-    <%= link_to 'Delete Project', @project, method: :delete,
-                confirm: "Are you sure you want to delete this project?" %>
-<% end %>
-<%= authorized?("create tickets", @project) do %>
-    <%= link_to 'New Ticket', new_project_ticket_path(@project) %>
-<% end %>
-<%= form_tag search_project_tickets_path(@project), method: :get do %>
+<div class="navlinks">
+  <%= admins_only do %>
+      <%= link_to 'Edit Project', edit_project_path(@project) %>
+      <%= link_to 'Delete Project', @project, method: :delete,
+                  confirm: "Are you sure you want to delete this project?" %>
+  <% end %>
+  <%= authorized?("create tickets", @project) do %>
+      <%= link_to 'New Ticket', new_project_ticket_path(@project) %>
+  <% end %>
+</div>
+<%= form_tag search_project_tickets_path(@project), method: :get, class: "search" do %>
     <%= label_tag "search" %>
     <%= text_field_tag "search", params[:search] %>
     <%= submit_tag "Search" %>

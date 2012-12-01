@@ -4,6 +4,7 @@ Feature: Creating tickets
   I want to be able to select a project and add a ticket to it
 
   Background:
+    Given there is a default state called "Open"
     Given there is a project called "Internet Explorer"
     And there are the following users:
       | email            | password |
@@ -20,7 +21,9 @@ Feature: Creating tickets
     And I fill in "Description" with "My pages are ugly"
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
+    And I should see "Project: Internet Explorer"
     And I should see "Created by user@example.com"
+    And I should see "Open" within "#ticket .state"
 
   Scenario: Creating a ticket with invalid attributes fails
     And I press "Create Ticket"

@@ -22,11 +22,34 @@ h1 {
 }
 
 nav {
-  margin: 10px 0 10px 0;
+  background: #dadada;
+  margin: 5px 10px 0px 10px;
+  padding: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  .pagination {
+    margin: 2px 10px 2px 10px;
+  }
+}
+
+.navlinks {
+  background: #eaeaea;
+  margin: 3px 10px 0px 10px;
+  padding: 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 
 a {
   color: #74CC00;
+  margin-right: 7px;
+}
+
+a#sign_out {
+  float: right;
+  margin-right: 2px;
 }
 
 textarea {
@@ -52,6 +75,15 @@ input[type=file] {
   margin-bottom: 10px;
 }
 
+.search {
+  background: #dadada;
+  margin: 5px 10px 2px 10px;
+  padding: 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
 .flash {
   padding: 10px;
   -moz-border-radius: 10px;
@@ -69,13 +101,9 @@ input[type=file] {
   background: #FF3444;
 }
 
-ul#tickets {
-  padding: 15px;
+ul#projects {
   list-style-type: none;
-}
 
-ul#tickets li {
-  margin-bottom: 10px;
 }
 
 #permissions {
@@ -100,6 +128,15 @@ ul#tickets li {
   tr.even {
     background: #C2EC4B;
   }
+}
+
+ul#tickets {
+  padding: 15px;
+  list-style-type: none;
+}
+
+ul#tickets li {
+  margin-bottom: 10px;
 }
 
 ul#tickets .state {
@@ -160,7 +197,7 @@ menu, #ticket .state, .states {
   -webkit-border-radius: 8px;
   border-radius: 8px;
   color: white;
-  padding: 8px;
+  padding: 3px;
 }
 
 #ticket .tag a {

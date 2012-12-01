@@ -8,6 +8,8 @@ Feature: Creating comments
       | email            | password |
       | user@example.com | password |
     And I am signed in as them
+    And there is a state called "Closed"
+    And there is a default state called "Open"
     And there is a project called "LSG Tracker"
     And "user@example.com" can view the "LSG Tracker" project
     And "user@example.com" has created a ticket for this project:
@@ -15,7 +17,6 @@ Feature: Creating comments
       | Change a ticket's state | You should be able to create a comment |
     Given I am on the homepage
     And I follow "LSG Tracker" within "#projects"
-    Given there is a state called "Open"
 
   Scenario: Creating a comment
     When I follow "Change a ticket's state"
@@ -42,18 +43,23 @@ Feature: Creating comments
 
   Scenario: A user without permission cannot change the state
     When I follow "Change a ticket's state"
+    Then I should see "Open" within "#ticket .state"
     Then I should not see the "#comment_state_id" element
+    When I fill in "Text" with "This is a stateless issue"
+    And I press "Create Comment"
+    Then I should see "Comment has been created."
+    And I should see "Open" within "#ticket .state"
 
-    Scenario: Adding a tag to a ticket
-      Given "user@example.com" can change states on the "LSG Tracker" project
-      And "user@example.com" can tag the "LSG Tracker" project
-      When I follow "Change a ticket's state"
-      Then I should not see "bug" within "#ticket #tags"
-      When I fill in "Text" with "Adding the bug tag"
-      And I fill in "Tags" with "bug"
-      And I press "Create Comment"
-      Then I should see "Comment has been created"
-      Then I should see "bug" within "#ticket #tags"
+  Scenario: Adding a tag to a ticket
+    Given "user@example.com" can change states on the "LSG Tracker" project
+    And "user@example.com" can tag the "LSG Tracker" project
+    When I follow "Change a ticket's state"
+    Then I should not see "bug" within "#ticket #tags"
+    When I fill in "Text" with "Adding the bug tag"
+    And I fill in "Tags" with "bug"
+    And I press "Create Comment"
+    Then I should see "Comment has been created"
+    Then I should see "bug" within "#ticket #tags"
 
 
 

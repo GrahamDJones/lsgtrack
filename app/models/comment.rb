@@ -14,8 +14,10 @@ class Comment < ActiveRecord::Base
   private
 
   def set_ticket_state
-    self.ticket.state = self.state
-    self.ticket.save!
+    if self.state
+      self.ticket.state = self.state
+      self.ticket.save!
+    end
   end
 
   def set_previous_state

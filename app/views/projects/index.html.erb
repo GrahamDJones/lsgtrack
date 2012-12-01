@@ -1,13 +1,16 @@
 <h2>Projects</h2>
+<div class="navlinks">
+
 <%= admins_only do %>
-    <%= link_to 'New Project', new_project_path %>
+      <%= link_to 'New Project', new_project_path %>
 <% end %>
-<br/>
+</div>
+
 <div>
   <%= paginate @projects %>
-<ul id="projects">
-  <% @projects.each do |project| %>
-      <li><%= link_to project.name, project %></li>
-  <% end %>
-</ul>
+  <ul id="projects">
+    <% @projects.each do |project| %>
+        <li><%= link_to project.name, project %></li>
+    <% end %>
+  </ul>
 </div>
