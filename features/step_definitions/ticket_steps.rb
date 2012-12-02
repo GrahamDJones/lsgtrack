@@ -18,4 +18,9 @@ And /^there are (\d+) tickets for this project$/ do |number|
   end
 end
 
+And /^there should be (\d+) watchers$/ do |number|
+  pages = all("#awatcher")
+  pages.count.should eql(number.to_i)
+end
+
 

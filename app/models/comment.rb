@@ -25,7 +25,7 @@ class Comment < ActiveRecord::Base
   end
 
   def creator_watches_ticket
-    ticket.watchers << user
+    ticket.watchers << user unless ticket.watchers.exists?(email: user.email )
   end
 
 end
