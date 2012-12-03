@@ -15,12 +15,19 @@ Background:
   And I follow "user@example.com"
   And I follow "Edit User"
 
-  Scenario: Update a user's details
-    When I fill in "Email" with "newname@example.com"
+  Scenario: Update a user's name
+    When I fill in "Name" with "New Name"
     And I press "Update User"
     Then I should see "User has been updated."
-    And I should see "newname@example.com"
+    And I should see "New Name (User)"
     And I should not see "user@example.com"
+
+  Scenario: Update a user's email
+    When I fill in "Email" with "new.email@example.com"
+    And I press "Update User"
+    Then I should see "User has been updated."
+    And I follow "user@example.com"
+    And I should see "new.email@example.com"
 
   Scenario: Toggle a user's admin ability
     When I check "Is an admin?"

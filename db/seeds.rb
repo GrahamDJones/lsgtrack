@@ -1,4 +1,4 @@
-admin_user = User.create(email: "admin@example.com", password: "password")
+admin_user = User.create(email: "admin@example.com", password: "password", name: "Admin User")
 admin_user.admin = true
 admin_user.confirm!
 default_state = State.create(name: "New",
