@@ -1,6 +1,9 @@
-<%= link_to "New User", new_admin_user_path %>
+<div class="navlinks">
+  <%= link_to "States", admin_states_path %>
+  <%= link_to "New User", new_admin_user_path %>
+</div>
 <ul>
   <% @users.each do |user| %>
-    <li><%= link_to user, [:admin, user] %></li>
+      <li><%= link_to user, [:admin, user] %></li>
   <% end %>
 </ul>
