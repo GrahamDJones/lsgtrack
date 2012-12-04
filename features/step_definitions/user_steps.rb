@@ -23,3 +23,9 @@ Given /^I am signed in as "(.*?)"$/ do |email|
   @user = User.find_by_email!(email)
   steps("Given I am signed in as them")
 end
+
+Given /^there are (\d+) users$/ do |number|
+  number.to_i.times do |i|
+    FactoryGirl.create(:user)
+  end
+end

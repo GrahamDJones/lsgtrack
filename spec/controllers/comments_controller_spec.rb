@@ -8,7 +8,7 @@ describe CommentsController do
                            description: "Can't be hacked",
                            user: user)
   end
-  let(:state) { State.create!(name: "New") }
+  let(:state) { State.create!(name: "New", color: "white", background: "green") }
 
   context "a user without permission to change state" do
     before do

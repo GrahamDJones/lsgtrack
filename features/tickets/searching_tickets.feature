@@ -11,6 +11,8 @@ Feature: Searching tags
     And there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
     And "user@example.com" can tag the "Time Tracker" project
+    And there is a default state called "Open"
+    And there is a state called "Closed"
     And "user@example.com" has created a ticket for this project:
       | title | description    | tags        | state |
       | Tag!  | Hey! You're it | iteration_1 | Open  |
