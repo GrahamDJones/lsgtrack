@@ -1,7 +1,16 @@
 <%= form_for [:admin, @state] do |f| %>
+    <%= f.error_messages %>
     <p>
       <%= f.label :name %>
       <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :background %>
+      <%= f.text_field :background %>
+    </p>
+    <p>
+      <%= f.label :color %>
+      <%= f.text_field :color %>
     </p>
     <%= f.submit %>
 <% end %>

@@ -11,5 +11,5 @@ Feature: Managing states
     Given I am on the homepage
     When I follow "Admin"
     And I follow "States"
-    And I follow "Make default" for the "Open" state
+    And I follow "Make default" within "#set_default_to_open"
     Then I should see "Open is now the default state."

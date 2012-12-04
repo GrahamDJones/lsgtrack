@@ -84,6 +84,15 @@ input[type=file] {
   border-radius: 3px;
 }
 
+.errorExplanation {
+  padding: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  background: #FF3444;
+}
+
 .flash {
   padding: 10px;
   -moz-border-radius: 10px;
@@ -107,6 +116,30 @@ ul#projects {
 }
 
 #permissions {
+  border: 1px solid #789B2F;
+
+  td, th {
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+  }
+
+  thead th {
+    background: #DFFF77;
+    border-bottom: 1px solid #789B2F;
+    padding: 10px;
+  }
+
+  tr.odd {
+    background: #F0FF91;
+  }
+
+  tr.even {
+    background: #C2EC4B;
+  }
+}
+
+#state_table {
   border: 1px solid #789B2F;
 
   td, th {
