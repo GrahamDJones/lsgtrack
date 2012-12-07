@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def find_states
-    @states = State.all
+    @ticket_states = TicketState.all
   end
 end

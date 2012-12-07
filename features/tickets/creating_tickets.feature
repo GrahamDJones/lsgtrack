@@ -4,7 +4,7 @@ Feature: Creating tickets
   I want to be able to select a project and add a ticket to it
 
   Background:
-    Given there is a default state called "Open"
+    Given there is a default ticket state called "Open"
     Given there is a project called "Internet Explorer"
     And there are the following users:
       | email            | password |

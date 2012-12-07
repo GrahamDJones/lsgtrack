@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe State do
+describe TicketState do
 end

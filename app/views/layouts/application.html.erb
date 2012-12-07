@@ -10,10 +10,10 @@
   </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <style>
-    <% for state in @states %>
-      .state_<%= state.name.parameterize %> {
-          background: <%= state.background %>;
-          color: <%= state.color %>;
+    <% for ticket_state in @ticket_states %>
+      .ticket_state_<%= ticket_state.name.parameterize %> {
+          background: <%= ticket_state.background %>;
+          color: <%= ticket_state.color %>;
       }
     <% end %>
   </style>

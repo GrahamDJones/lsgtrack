@@ -1,15 +1,15 @@
 admin_user = User.create(email: "admin@example.com", password: "password", name: "Admin User")
 admin_user.admin = true
 admin_user.confirm!
-default_state = State.create(name: "New",
+default_ticket_state = TicketState.create(name: "New",
                              background: "#85FF00",
                              color: "white")
-default_state.default = true
-default_state.save!
-State.create(name: "Open",
+default_ticket_state.default = true
+default_ticket_state.save!
+TicketState.create(name: "Open",
              background: "#00CFFD",
              color: "white")
-State.create(name: "Closed",
+TicketState.create(name: "Closed",
              background: "black",
              color: "white")
 

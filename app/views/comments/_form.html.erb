@@ -5,10 +5,10 @@
       <%= f.label :text %><br/>
       <%= f.text_area :text, rows: 10 %>
     </p>
-    <% authorized?(:"change states", @project) do %>
+    <% authorized?(:"change ticket states", @project) do %>
         <p>
           <%= f.label :state_id %>
-          <%= f.select :state_id, @states.map { |s| [s.name, s.id] },
+          <%= f.select :state_id, @ticket_states.map { |s| [s.name, s.id] },
                        selected: @ticket.state_id %>
         </p>
     <% end %>

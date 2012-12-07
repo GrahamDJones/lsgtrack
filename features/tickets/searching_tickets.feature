@@ -11,8 +11,8 @@ Feature: Searching tags
     And there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
     And "user@example.com" can tag the "Time Tracker" project
-    And there is a default state called "Open"
-    And there is a state called "Closed"
+    And there is a default ticket state called "Open"
+    And there is a ticket state called "Closed"
     And "user@example.com" has created a ticket for this project:
       | title | description    | tags        | state |
       | Tag!  | Hey! You're it | iteration_1 | Open  |
@@ -32,14 +32,14 @@ Feature: Searching tags
     And I should not see "Tagged!"
     And I should not see "Found!"
 
-  Scenario: Finding by state
+  Scenario: Finding by ticket state
     When I fill in "Search" with "state:Open"
     And I press "Search"
     Then I should see "Tag!"
     And I should see "Found!"
     And I should not see "Tagged!"
 
-  Scenario: Finding by state or has tag
+  Scenario: Finding by ticket state or has tag
     When I fill in "Search" with "state:Open tag:find"
     And I press "Search"
     Then I should see "Found!"

@@ -21,14 +21,6 @@ class State < ActiveRecord::Base
 
   private
 
-  def unset_current_default!
-    current_default_state = State.find_by_default(true)
-    if current_default_state
-      current_default_state.default = false
-      current_default_state.save!
-    end
-  end
-
   def colors_must_differ
     errors.add(:color, "Colors must not be the same") if self.color == self.background
   end

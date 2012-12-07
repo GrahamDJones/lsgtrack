@@ -4,6 +4,8 @@ Feature: Assigning permissions
   I want to check all the boxes
 
   Background:
+    Given there is a default ticket state called "New"
+    Given there is a ticket state called "Open"
     Given there are the following users:
       | email             | password | admin |
       | admin@example.com | password | true  |
@@ -17,7 +19,6 @@ Feature: Assigning permissions
     And I follow "Users"
     And I follow "user@example.com"
     And I follow "Permissions"
-    Given there is a state called "Open"
 
   Scenario: Viewing a project
     When I check "View" for "Time Tracker"
@@ -65,10 +66,11 @@ Feature: Assigning permissions
     And I follow "Delete"
     Then I should see "Ticket has been deleted."
 
-  Scenario: Changing states for a ticket
+  Scenario: Changing ticket states for a ticket
     When I check "View" for "Time Tracker"
-    And I check "Change States" for "Time Tracker"
+    And I check "Change ticket states" for "Time Tracker"
     And I press "Update"
+    Then I should see "Permissions updated"
     And I follow "Sign out"
     Given I am signed in as "user@example.com"
     When I follow "Time Tracker"

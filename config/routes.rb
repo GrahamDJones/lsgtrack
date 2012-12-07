@@ -42,7 +42,7 @@ Lsgtrack::Application.routes.draw do
     resources :users do
       resources :permissions
     end
-    resources :states do
+    resources :ticket_states do
       member do
         get :make_default
       end
