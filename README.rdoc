@@ -3,15 +3,11 @@ Start of the project/time tracker
 
 TODO
 
-
-
-Paginate permissions, update in groups...
-
-Add project status with default
-  Open, default, generally visible
+Implement project status in projects
+  Open, default, visible to users with view permission on project
   Closed, only viewable by admins
 
-Implement project status in projects
+Paginate permissions, update in groups...
 
 Delayed job and devise emails (use gem devise-async?)
 
