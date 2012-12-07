@@ -1,0 +1,5 @@
+<h2>Edit project State</h2>
+<%= form_for [:admin, @project_state] do |f| %>
+    <%= render "fields", f: f %>
+    <%= f.submit "Update Project State" %>
+<% end %>

@@ -47,6 +47,11 @@ Lsgtrack::Application.routes.draw do
         get :make_default
       end
     end
+    resources :project_states do
+      member do
+        get :make_default
+      end
+    end
   end
 
   put '/admin/users/:user_id/permissions', :to => "admin/permissions#update", :as => :update_user_permissions

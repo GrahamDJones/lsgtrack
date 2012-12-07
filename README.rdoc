@@ -11,6 +11,8 @@ Add project status with default
   Open, default, generally visible
   Closed, only viewable by admins
 
+Implement project status in projects
+
 Delayed job and devise emails (use gem devise-async?)
 
 Implement simple_form (and bootstrap?)

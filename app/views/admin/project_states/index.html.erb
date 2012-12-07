@@ -1,7 +1,7 @@
 <div class="navlinks">
   <%= link_to "Users", admin_users_path %>
-  <%= link_to "Project States", admin_project_states_path %>
-  <%= link_to "New Ticket State", new_admin_ticket_state_path %>
+  <%= link_to "Ticket States", admin_ticket_states_path %>
+  <%= link_to "New Project State", new_admin_project_state_path %>
 </div>
 
 <table id="state_table">
@@ -14,14 +14,14 @@
   <th></th>
   </thead>
   <tbody>
-  <% @ticket_states.each do |state| %>
+  <% @project_states.each do |state| %>
       <tr class='<%= cycle("odd", "even") %>' id=<%= %Q(access_state_#{state.name.downcase}) %>>
         <td><%= state.name %></td>
         <td><%= "#{state.default ? 'Yes' : ''}" %></td>
         <td><%= state.background %></td>
         <td><%= state.color %></td>
-        <td><%= link_to 'Edit', edit_admin_ticket_state_path(state) %></td>
-        <td><%= link_to "Make default", make_default_admin_ticket_state_path(state) %></td>
+        <td><%= link_to 'Edit', edit_admin_project_state_path(state) %></td>
+        <td><%= link_to "Make default", make_default_admin_project_state_path(state) %></td>
       </tr>
   <% end %>
   </tbody>

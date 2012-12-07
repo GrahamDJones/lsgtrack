@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
 
   def find_states
     @ticket_states = TicketState.all
+    @project_states = ProjectState.all
   end
 end
