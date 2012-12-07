@@ -16,14 +16,14 @@ Feature: Creating ticket states
     And I fill in "Name" with "Duplicate"
     And I fill in "Color" with "bisque"
     And I fill in "Background" with "springgreen"
-    And I press "Create Ticket state"
+    And I press "Create Ticket State"
     Then I should see "Ticket State has been created."
 
   Scenario: Creating a ticket state with missing name
     When I follow "Admin"
     And I follow "Ticket States"
     And I follow "New Ticket State"
-    And I press "Create Ticket state"
+    And I press "Create Ticket State"
     Then I should see "Ticket State has not been created."
     And I should see "Name can't be blank"
 
@@ -34,6 +34,6 @@ Feature: Creating ticket states
     And I fill in "Name" with "Duplicate"
     And I fill in "Color" with "white"
     And I fill in "Background" with "white"
-    And I press "Create Ticket state"
+    And I press "Create Ticket State"
     Then I should see "Ticket State has not been created."
     And I should see "Colors must not be the same"

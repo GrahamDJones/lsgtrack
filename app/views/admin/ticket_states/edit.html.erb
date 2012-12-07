@@ -1,2 +1,5 @@
 <h2>Edit Ticket State</h2>
-<%= render "form" %>
+<%= form_for [:admin, @ticket_state] do |f| %>
+    <%= render "fields", f: f %>
+    <%= f.submit "Update Ticket State" %>
+<% end %>

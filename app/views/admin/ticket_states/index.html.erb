@@ -14,7 +14,7 @@
   </thead>
   <tbody>
   <% @ticket_states.each do |state| %>
-      <tr class='<%= cycle("odd", "even") %>' id=<%= %Q(set_default_to_#{state.name.downcase}) %>>
+      <tr class='<%= cycle("odd", "even") %>' id=<%= %Q(access_state_#{state.name.downcase}) %>>
         <td><%= state.name %></td>
         <td><%= "#{state.default ? 'Yes' : ''}" %></td>
         <td><%= state.background %></td>

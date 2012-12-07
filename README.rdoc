@@ -1,2 +1,22 @@
 LSG
 Start of the project/time tracker
+
+TODO
+
+
+
+Paginate permissions, update in groups...
+
+Add project status with default
+  Open, default, generally visible
+  Closed, only viewable by admins
+
+Delayed job and devise emails (use gem devise-async?)
+
+Implement simple_form (and bootstrap?)
+
+Add permission to report time
+
+Add time reporting against tasks (html)
+
+Add time reporting to the api

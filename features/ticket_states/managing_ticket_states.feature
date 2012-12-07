@@ -11,5 +11,5 @@ Feature: Managing ticket states
     Given I am on the homepage
     When I follow "Admin"
     And I follow "Ticket States"
-    And I follow "Make default" within "#set_default_to_open"
+    And I follow "Make default" within "#access_state_open"
     Then I should see "Open is now the default ticket state."
