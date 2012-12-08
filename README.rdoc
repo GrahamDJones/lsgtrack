@@ -3,11 +3,6 @@ Start of the project/time tracker
 
 TODO
 
-Implement project status in projects
-  Open, default, visible to users with view permission on project --DONE
-  Closed, only viewable by admins -- DONE
-  Can not be both admin and default
-
 Paginate permissions, update in groups...
 
 Delayed job and devise emails (use gem devise-async?)

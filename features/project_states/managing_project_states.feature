@@ -13,3 +13,10 @@ Feature: Managing project states
     And I follow "Project States"
     And I follow "Make default" within "#access_state_open"
     Then I should see "Open is now the default project state."
+
+  Scenario: Marking an admin project state as default is not allowed
+    Given I am on the homepage
+    When I follow "Admin"
+    And I follow "Project States"
+    And I follow "Make default" within "#access_state_closed"
+    Then I should see "Can not make admin only project state the default."

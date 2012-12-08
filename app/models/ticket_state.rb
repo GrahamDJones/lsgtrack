@@ -1,6 +1,12 @@
 class TicketState < State
   self.inheritance_column="state_type"
 
+  def default!
+    unset_current_default!
+    self.default = true
+    self.save!
+  end
+
   private
 
   def unset_current_default!

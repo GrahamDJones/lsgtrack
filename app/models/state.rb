@@ -13,12 +13,6 @@ class State < ActiveRecord::Base
     name
   end
 
-  def default!
-    unset_current_default!
-    self.default = true
-    self.save!
-  end
-
   private
 
   def colors_must_differ

@@ -32,7 +32,11 @@ class Admin::ProjectStatesController < Admin::BaseController
   def make_default
     @project_state = ProjectState.find(params[:id])
     @project_state.default!
-    redirect_to admin_project_states_path, notice: "#{@project_state.name} is now the default project state."
+    if @project_state.errors.count == 0
+      redirect_to admin_project_states_path, notice: "#{@project_state.name} is now the default project state."
+    else
+      redirect_to admin_project_states_path, alert: @project_state.errors.full_messages.join(" ")
+    end
   end
 
   private
