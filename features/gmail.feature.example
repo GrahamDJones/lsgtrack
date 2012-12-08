@@ -4,11 +4,11 @@ Feature: Gmail
   I want to ensure that my configuration is correct
 
   Background:
+    Given Action Mailer delivers via SMTP
     Given there are the following users:
       | email                 | password   |
       | alice@example.com     | password   |
       | example@example.com | example |
-    And Action Mailer delivers via SMTP
 
     Given there is a project called "Time Tracker"
     And "alice@example.com" can view the "Time Tracker" project
@@ -16,9 +16,11 @@ Feature: Gmail
     And "example@example.com" has created a ticket for this project:
       | title        | description      |
       | Release date | TBA very shortly |
+    And Jobs are being dispatched
 
+  @javascript
   Scenario:  Receiving a real-world email
-    Given the job queue is empty
+#    Given the job queue is empty
     Given I am signed in as "alice@example.com"
     Given I am on the homepage
     When I follow "Time Tracker"
@@ -26,9 +28,9 @@ Feature: Gmail
     And I fill in "Text" with "Posting a comment"
     And I press "Create Comment"
     Then I should see "Comment has been created"
-    And the job queue should have 1 job in it
-    When I start the job queue
-    Then the job queue is empty
+#    And the job queue should have 1 job in it
+    When Jobs are being dispatched
+#    Then the job queue is empty
 
     When I log into gmail with:
       | username              | password   |

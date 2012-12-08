@@ -20,20 +20,20 @@ describe Receiver do
   end
 
   it "parses a reply from a comment update into a comment" do
-    #print "TICKET: #{ticket.pretty_inspect}"
-    #print "COMMENT: #{comment.pretty_inspect}"
+    #Delayed::Worker.new.work_off
+    #print "TICKET: #{ticket.pretty_inspect}\n"
+    #print "COMMENT: #{comment.pretty_inspect}\n"
     sent_mail = ActionMailer::Base.deliveries.last
-    #print "SENT_MAIL: #{sent_mail.pretty_inspect}"
+    #print "SENT_MAIL: #{sent_mail.pretty_inspect}\n"
     original = Notifier.comment_updated(comment, ticket_owner)
+    #print "ORIGINAL: #{original.pretty_inspect}\n"
     reply_text = "This is a brand new comment"
-    #print "SENT_MAIL.FROM: #{sent_mail.from}"
-    #print "SENT_MAIL.FROM.FIRST: #{sent_mail.from.first}"
     reply = Mail.new(:from => commenter.email,
                      :subject => "Re: #{original.subject}",
                      :body => %Q{#{reply_text}
                      #{original.body}
                      },
-                     :to => sent_mail.reply_to)
+                     :to => original.reply_to)
     #TODO This does not work -- ActionMailer parses out the reply_to and strips the encoded project/ticket
     #lambda { Receiver.parse(reply) }.should(
     #    change(comment.ticket.comments, :count).by(1)

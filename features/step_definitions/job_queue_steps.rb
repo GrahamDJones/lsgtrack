@@ -6,6 +6,10 @@ And /^the job queue should have (\d+) job in it$/ do |number|
   Delayed::Job.count.should eql(number.to_i)
 end
 
-When /^I start the job queue$/ do
+And /^Jobs are being dispatched$/ do
   Delayed::Worker.new.work_off
+end
+
+And /^I cancel all Jobs$/ do
+  Delayed::Job.all { |job| job.delete }
 end
