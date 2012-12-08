@@ -8,6 +8,7 @@ Feature: Ticket notifications
 
     Given a clear email queue
 
+    And there is a default project state called "Open"
     Given there is a project called "Time Tracker"
     And "alice@example.com" can view the "Time Tracker" project
     And "bob@example.com" can view the "Time Tracker" project

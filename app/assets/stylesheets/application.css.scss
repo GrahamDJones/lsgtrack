@@ -70,6 +70,11 @@ input[type=text], input[type=email], input[type=password], textarea {
   margin: 5px 0px;
 }
 
+input[type=submit] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 input[type=file] {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -143,7 +148,7 @@ ul#projects {
   border: 1px solid #789B2F;
 
   td, th {
-    padding: 10px;
+    padding: 3px;
     margin: 0;
     text-align: center;
   }
@@ -205,6 +210,9 @@ menu, #ticket .state, .states {
 
 #ticket section {
   clear: both;
+}
+.floatright {
+  float: right;
 }
 
 .state {

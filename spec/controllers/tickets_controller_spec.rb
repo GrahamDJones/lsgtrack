@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe TicketsController do
   let(:user) { create_user! }
+  let(:project_state) { FactoryGirl.create(:project_state) }
   let(:project) { FactoryGirl.create(:project) }
   let(:ticket) { FactoryGirl.create(:ticket, project: project, user: user) }
 

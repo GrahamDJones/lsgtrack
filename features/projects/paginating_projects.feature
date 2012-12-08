@@ -4,6 +4,7 @@ Feature: Paginating projects
   I want to paginate project lists
 
   Background:
+    And there is a default project state called "Open"
     Given there are 100 projects
     Given there are the following users:
       | email            | password |

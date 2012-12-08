@@ -1,16 +1,19 @@
 <h2>Projects</h2>
 <div class="navlinks">
 
-<%= admins_only do %>
+  <%= admins_only do %>
       <%= link_to 'New Project', new_project_path %>
-<% end %>
+  <% end %>
 </div>
 
 <div>
   <%= paginate @projects %>
   <ul id="projects">
     <% @projects.each do |project| %>
-        <li><%= link_to project.name, project %></li>
+        <li>
+          <%= render :partial => "states/project_state", :locals => {state: project.state} if project.state %>
+          <%= link_to project.name, project %>
+        </li>
     <% end %>
   </ul>
 </div>

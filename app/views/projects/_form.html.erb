@@ -1,8 +1,13 @@
 <%= form_for(@project) do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name  %>
-    <%= f.text_field :name  %>
-  </p>
-  <%= f.submit  %>
+    <%= f.error_messages %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :state_id %>
+      <%= f.select :state_id, @project_states.map { |s| [s.name, s.id] },
+                   selected: @project.state_id %>
+    </p>
+    <%= f.submit %>
 <% end %>

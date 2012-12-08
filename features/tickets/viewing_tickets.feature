@@ -8,6 +8,7 @@ Feature: Viewing tickets
       | email            | password |
       | user@example.com | password |
     And I am signed in as them
+    And there is a default project state called "Open"
     And there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
     And "user@example.com" has created a ticket for this project:

@@ -4,6 +4,7 @@ Feature: Paginating tickets
   I want to paginate ticket results
 
   Background:
+    And there is a default project state called "Open"
     Given there is a project called "Time Tracker"
     Given there are the following users:
       | email            | password |

@@ -8,6 +8,7 @@ Feature: Watching tickets
       | email            | password |
       | user1@example.com | password |
       | user2@example.com | password |
+    And there is a default project state called "Open"
     Given there is a project called "Time Tracker"
     And "user1@example.com" has created a ticket for this project:
       | title        | description       |

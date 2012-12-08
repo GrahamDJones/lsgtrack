@@ -11,6 +11,7 @@ Feature: Assigning permissions
       | admin@example.com | password | true  |
       | user@example.com  | password | false |
     And I am signed in as "admin@example.com"
+    And there is a default project state called "Open"
     And there is a project called "Time Tracker"
     And "user@example.com" has created a ticket for this project:
       | title  | description       |

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207014718) do
+ActiveRecord::Schema.define(:version => 20121207213200) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -68,16 +68,20 @@ ActiveRecord::Schema.define(:version => 20121207014718) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "state_id"
   end
+
+  add_index "projects", ["state_id"], :name => "index_projects_on_state_id"
 
   create_table "states", :force => true do |t|
     t.string   "name"
     t.string   "color"
     t.string   "background"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "default",    :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "default",       :default => false
     t.string   "state_type"
+    t.boolean  "is_admin_only", :default => false
   end
 
   create_table "tags", :force => true do |t|

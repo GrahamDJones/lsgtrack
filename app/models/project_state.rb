@@ -1,5 +1,6 @@
 class ProjectState < State
   self.inheritance_column="state_type"
+  attr_accessible :is_admin_only
 
   private
 

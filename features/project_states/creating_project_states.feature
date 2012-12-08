@@ -16,6 +16,7 @@ Feature: Creating project states
     And I fill in "Name" with "Duplicate"
     And I fill in "Color" with "bisque"
     And I fill in "Background" with "springgreen"
+    And I check "Admin only?"
     And I press "Create Project State"
     Then I should see "Project State has been created."
 

@@ -3,10 +3,11 @@ require "spec_helper"
 describe "/api/v1/projects", type: :api do
   let(:user) { create_user! }
   let(:token) { user.authentication_token }
+  let(:project_state) { FactoryGirl.create(:project_state) }
 
   before do
-    @project = FactoryGirl.create(:project)
-    @project2 = FactoryGirl.create(:project, name: "Access Denied")
+    @project = FactoryGirl.create(:project, state: project_state)
+    @project2 = FactoryGirl.create(:project, name: "Access Denied", state: project_state)
     user.permissions.create!(action: "view", thing: @project)
   end
 

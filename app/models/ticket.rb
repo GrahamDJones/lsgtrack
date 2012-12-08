@@ -29,8 +29,7 @@ class Ticket < ActiveRecord::Base
   private
 
   def set_default_state
-    self.state = State.find_by_default(true)
-    print ""
+    self.state = TicketState.find_by_default(true)
   end
 
   def creator_watches_me

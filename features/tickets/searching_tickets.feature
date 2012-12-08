@@ -8,6 +8,7 @@ Feature: Searching tags
       | email            | password |
       | user@example.com | password |
     And I am signed in as them
+    And there is a default project state called "Open"
     And there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
     And "user@example.com" can tag the "Time Tracker" project

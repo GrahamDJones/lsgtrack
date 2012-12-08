@@ -11,7 +11,7 @@ TicketState.create(name: "Closed", background: "black", color: "white")
 default_project_state = ProjectState.create(name: "Open", background: "#00CFFD", color: "white")
 default_project_state.default = true
 default_project_state.save!
-ProjectState.create(name: "Closed", background: "black", color: "white")
+ProjectState.create(name: "Closed", background: "black", color: "white", is_admin_only: true)
 
 unless Rails.env.production?
   Project.create(name: "Time Tracker")

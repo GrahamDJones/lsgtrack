@@ -1,5 +1,5 @@
 <div id="ticket">
-  <h2><%= @ticket.title %></h2>
+  <h2><%= "Ticket: " + @ticket.title %></h2>
   <%= link_to "Project: #{@project.name}", @project %>
   <%= authorized?("edit tickets", @project) do %>
       <%= link_to 'Edit Ticket', [:edit, @project, @ticket] %>
@@ -11,7 +11,7 @@
 
   <br>
   <small>Created by <%= @ticket.user.email %></small>
-  <%= render @ticket.state if @ticket.state %>
+  <%= render :partial => "states/ticket_state", :locals => { state: @ticket.state } if @ticket.state %>
   <%= simple_format(@ticket.description) %>
   <div id="tags"><%= render @ticket.tags %></div>
   <% if @ticket.assets.exists? %>

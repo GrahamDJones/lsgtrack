@@ -10,6 +10,7 @@ Feature: Creating comments
     And I am signed in as them
     And there is a ticket state called "Closed"
     And there is a default ticket state called "Open"
+    And there is a default project state called "Open"
     And there is a project called "LSG Tracker"
     And "user@example.com" can view the "LSG Tracker" project
     And "user@example.com" has created a ticket for this project:
