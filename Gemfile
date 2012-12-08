@@ -4,7 +4,8 @@ gem 'rails', '3.2.9'
 
 gem 'pg'
 gem 'kaminari'
-gem 'devise', "~> 1.4.3"
+gem 'devise'
+gem 'devise-async'
 gem 'cancan', "~> 1.6.8"
 gem 'paperclip', "~> 3.3.1"
 gem 'searcher', "~> 0.0.6"
