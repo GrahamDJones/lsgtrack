@@ -5,14 +5,15 @@ Feature: Hidden Links
 
   Background:
     Given there are the following users:
-      | email             | password   | admin |
-      | user@example.com  | password   | false  |
-      | admin@example.com | password   | true  |
+      | email              | password | admin |
+      | user@example.com   | password | false |
+      | admin@example.com  | password | true  |
+      | admin2@example.com | password | true  |
     And there is a default project state called "Open"
     And there is a project called "Time Tracker"
     And "user@example.com" has created a ticket for this project:
-      | title  | description                    |
-      | Shiny! | Gradients Starbursts! Oh My    |
+      | title  | description                 |
+      | Shiny! | Gradients Starbursts! Oh My |
     And "user@example.com" can view the "Time Tracker" project
 
   Scenario: New project link is hidden for not-signed in users
@@ -101,3 +102,10 @@ Feature: Hidden Links
     And I follow "Shiny!"
     Then I should see the "Delete" link
 
+  Scenario: Permissions link not shown for admin users
+    Given I am signed in as "admin@example.com"
+    Given I am on the homepage
+    When I follow "Admin"
+    And I follow "Users"
+    And I follow "admin2@example.com"
+    Then I should not see "Permissions"

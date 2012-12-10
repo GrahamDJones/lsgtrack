@@ -3,7 +3,12 @@ class Admin::PermissionsController < ApplicationController
 
   def index
     @ability = Ability.new(@user)
-    @projects = Project.all
+    if @user.admin?
+      @projects = []
+    else
+      @projects = Project.all
+      #@projects = Project.state_not_admin
+    end
   end
 
   def update
