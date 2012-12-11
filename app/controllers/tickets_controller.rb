@@ -44,8 +44,12 @@ class TicketsController < ApplicationController
   end
 
   def search
-    @tickets = @project.tickets.search(params[:search]).page(params[:page])
-    render "projects/show"
+    if params[:search].include?("tag:") || params[:search].include?("state:")
+      @tickets = @project.tickets.search(params[:search]).page(params[:page])
+      render "projects/show"
+    else
+      redirect_to @project, alert: "Could not find tickets with tag:xxx or state:yyy"
+    end
   end
 
   def watch

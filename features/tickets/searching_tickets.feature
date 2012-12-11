@@ -54,4 +54,9 @@ Feature: Searching tags
     And I should not see "Tagged!"
     And I should not see "Found!"
 
+  Scenario: Invalid search entry fails gracefully
+    When I fill in "Search" with "badstuff"
+    And I press "Search"
+    Then I should see "Could not find tickets with tag:xxx or state:yyy"
+
 
