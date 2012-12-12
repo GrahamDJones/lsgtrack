@@ -81,3 +81,17 @@ Feature: Assigning permissions
     And I press "Create Comment"
     Then I should see "Comment has been created"
     And I should see "Open" within "#ticket .state"
+
+  Scenario: Reporting time for a project
+    When I check "View" for "Time Tracker"
+    When I check "Report Time" for "Time Tracker"
+    And I press "Update"
+    And I follow "Sign out"
+
+    Given I am signed in as "user@example.com"
+    When I follow "Time Tracker"
+    And I follow "Time Entry"
+    And I fill in "Date" with "12/15/2012"
+    And I fill in "Duration" with "5.75"
+    And I press "Save"
+    Then I should see "Time Entry has been created."

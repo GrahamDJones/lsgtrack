@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   belongs_to :state
   has_many :tickets, dependent: :destroy, order: "created_at DESC"
   has_many :permissions, as: :thing
+  has_many :time_entries, through: :tickets, dependent: :destroy
 
   scope :readable_by, lambda { |user|
     joins(:permissions).where(permissions: {action: "view", user_id: user.id})

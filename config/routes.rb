@@ -24,7 +24,10 @@ Lsgtrack::Application.routes.draw do
         post :watch
       end
     end
+    resources :time_entries
   end
+
+  resources :time_entries
 
   resources :tickets do
     resources :comments

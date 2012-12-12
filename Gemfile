@@ -12,6 +12,7 @@ gem 'searcher', "~> 0.0.6"
 gem 'jquery-rails'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem 'simple_form'
 
 
 # Gems used only for assets and not required
@@ -34,8 +35,8 @@ end
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  #gem 'better_errors'
+  #gem 'binding_of_caller'
 end
 
 group :test, :development do

@@ -13,6 +13,9 @@
   <%= authorized?("create tickets", @project) do %>
       <%= link_to 'New Ticket', new_project_ticket_path(@project) %>
   <% end %>
+  <%= authorized?("report time", @project) do %>
+      <%= link_to 'Time Entry', new_project_time_entry_path(@project) %>
+  <% end %>
 </div>
 <%= form_tag search_project_tickets_path(@project), method: :get, class: "search" do %>
     <%= label_tag "search" %>

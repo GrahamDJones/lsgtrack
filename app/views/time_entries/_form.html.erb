@@ -1,0 +1,13 @@
+<%= simple_form_for [@project, @time_entry] do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs form-horizontal">
+      <%= f.association :ticket %>
+      <%= f.input :work_date, as: :datepicker,
+                  input_html: {id: "datepicker"},
+                  label: "Date" %>
+      <%= f.input :duration_minutes, label: "Duration" %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, :disable_with => "Saving...", :value => "Save" %>
+    </div>
+<% end %>

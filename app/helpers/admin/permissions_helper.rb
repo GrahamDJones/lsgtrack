@@ -5,7 +5,8 @@ module Admin::PermissionsHelper
         "create tickets" => "Create Tickets",
         "edit tickets" => "Edit Tickets",
         "delete tickets" => "Delete Tickets",
-        "change ticket states" => "Change Ticket States"
+        "change ticket states" => "Change Ticket States",
+        "report time" => "Report Time"
     }
   end
 end
