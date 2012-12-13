@@ -10,6 +10,7 @@
   <th>Default</th>
   <th>Background</th>
   <th>Text Color</th>
+  <th>Sample</th>
   <th>Admin Only</th>
   <th></th>
   <th></th>
@@ -21,6 +22,7 @@
         <td><%= "#{state.default ? 'Yes' : ''}" %></td>
         <td><%= state.background %></td>
         <td><%= state.color %></td>
+        <td><%= render :partial => "states/ticket_state", :locals => { state: state }  %></td>
         <td><%= "#{state.is_admin_only ? 'Yes' : ''}" %></td>
         <td><%= link_to 'Edit', edit_admin_project_state_path(state) %></td>
         <td><%= link_to "Make default", make_default_admin_project_state_path(state) %></td>

@@ -27,7 +27,7 @@ Feature: Entering time for projects
     And I fill in "Duration" with "5"
     And I press "Save"
     Then I should see "Time Entry has been created."
-    And I should see "Time spent: 5 minutes" within "#ticket"
+    And I should see "Time spent: 5 minutes" within "#ticket #time_spent"
 
   Scenario: Reporting time in minutes for a project
     And I follow "Time Entry"
@@ -36,7 +36,7 @@ Feature: Entering time for projects
     And I fill in "Duration" with "105"
     And I press "Save"
     Then I should see "Time Entry has been created."
-    And I should see "Time spent: 1 hour 45 minutes" within "#ticket"
+    And I should see "Time spent: 1 hour 45 minutes" within "#ticket #time_spent"
 
   Scenario: Reporting time as fractional hours for a project
     And I follow "Time Entry"
@@ -45,7 +45,7 @@ Feature: Entering time for projects
     And I fill in "Duration" with "1.75"
     And I press "Save"
     Then I should see "Time Entry has been created."
-    And I should see "Time spent: 1 hour 45 minutes" within "#ticket"
+    And I should see "Time spent: 1 hour 45 minutes" within "#ticket #time_spent"
 
   Scenario: Reporting time as hours and minutes for a project
     And I follow "Time Entry"
@@ -54,7 +54,7 @@ Feature: Entering time for projects
     And I fill in "Duration" with "1:45"
     And I press "Save"
     Then I should see "Time Entry has been created."
-    And I should see "Time spent: 1 hour 45 minutes" within "#ticket"
+    And I should see "Time spent: 1 hour 45 minutes" within "#ticket #time_spent"
 
   Scenario: Reporting time in exact hours for a project
     And I follow "Time Entry"
@@ -63,4 +63,4 @@ Feature: Entering time for projects
     And I fill in "Duration" with "60"
     And I press "Save"
     Then I should see "Time Entry has been created."
-    And I should see "Time spent: 1 hour exactly" within "#ticket"
+    And I should see "Time spent: 1 hour exactly" within "#ticket #time_spent"

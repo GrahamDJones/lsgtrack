@@ -23,7 +23,7 @@ Feature: Creating tickets
     And I press "Create Ticket"
     Then I should see "Ticket has been created."
     And I should see "Project: Internet Explorer"
-    And I should see "Created by user@example.com"
+    And I should see "Created by: user@example.com"
     And I should see "Open" within "#ticket .state"
 
   Scenario: Creating a ticket with invalid attributes fails
