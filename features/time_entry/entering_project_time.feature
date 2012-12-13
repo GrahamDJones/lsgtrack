@@ -1,4 +1,4 @@
-Feature: Entering time for projects and tickets
+Feature: Entering time for projects
   In order to be able to enter time spent reports
   As a user
   I want a simple form to make entries
@@ -20,7 +20,7 @@ Feature: Entering time for projects and tickets
     Given I am on the homepage
     And I follow "Time Tracker" within "#projects"
 
-  Scenario: Reporting time lass than 1 hour for a project
+  Scenario: Reporting time less than 1 hour for a project
     And I follow "Time Entry"
     And I select "Work on this one" from "time_entry_ticket_id"
     And I fill in "Date" with "12/15/2012"

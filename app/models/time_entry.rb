@@ -4,15 +4,9 @@ class TimeEntry < ActiveRecord::Base
   belongs_to :user
 
   def duration=(str)
-    self.duration_minutes = if str.include?(':')
-                         a = str.split(':')
-                         a[0].to_i * 60 + a[1].to_i
-                       elsif str.include?('.')
-                         (str.to_f * 60).to_i
-                       else
-                         str.to_i
-                       end unless str.blank?
+    self.duration_minutes = TimeSpent.new(str).to_i
   end
+
   def duration
     self.duration_minutes
   end

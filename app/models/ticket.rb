@@ -27,7 +27,7 @@ class Ticket < ActiveRecord::Base
     self.tags << tags
   end
 
-  def time_spent
+  def time_spent_str
     TimeSpent.new(self.time_entries.sum(:duration_minutes))
   end
 

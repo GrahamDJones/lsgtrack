@@ -14,7 +14,7 @@
   <%= render :partial => "states/ticket_state", :locals => { state: @ticket.state } if @ticket.state %>
   <%= simple_format(@ticket.description) %>
   <div id="tags"><%= render @ticket.tags %></div>
-  <div id="time_spent"><%= @ticket.time_spent %></div>
+  <div id="time_spent"><%= @ticket.time_spent_str %></div>
   <% if @ticket.assets.exists? %>
       <h3>Attached Files</h3>
 
