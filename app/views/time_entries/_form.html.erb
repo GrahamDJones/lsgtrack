@@ -5,7 +5,7 @@
       <%= f.input :work_date, as: :datepicker,
                   input_html: {id: "datepicker"},
                   label: "Date" %>
-      <%= f.input :duration_minutes, label: "Duration" %>
+      <%= f.input :duration, label: "Duration", :placeholder => 'hh:mm or h.hh or mmm' %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, :disable_with => "Saving...", :value => "Save" %>

@@ -27,6 +27,10 @@ class Ticket < ActiveRecord::Base
     self.tags << tags
   end
 
+  def time_spent
+    TimeSpent.new(self.time_entries.sum(:duration_minutes))
+  end
+
   private
 
   def set_default_state
