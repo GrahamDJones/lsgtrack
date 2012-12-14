@@ -16,6 +16,9 @@ Feature: Assigning permissions
     And "user@example.com" has created a ticket for this project:
       | title  | description       |
       | Shiny! | Eye-blindingly so |
+    And "user@example.com" has created a time entry for this ticket
+      | work_date  | duration_minutes |
+      | 2012-12-06 | 378              |
     When I follow "Admin"
     And I follow "Users"
     And I follow "user@example.com"
@@ -95,3 +98,15 @@ Feature: Assigning permissions
     And I fill in "Duration" with "5"
     And I press "Save"
     Then I should see "Time Entry has been created."
+
+  Scenario: Managing time for a project
+    When I check "View" for "Time Tracker"
+    When I check "Manage Time" for "Time Tracker"
+    And I press "Update"
+    And I follow "Sign out"
+
+    Given I am signed in as "user@example.com"
+    When I follow "Time Tracker"
+    And I follow "Shiny!"
+    And I follow "Time Reported" within "#ticket"
+    Then I should see "Edit"

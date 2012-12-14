@@ -4,7 +4,7 @@ class TimeEntriesController < ApplicationController
 
   def new
     if params[:ticket_id]
-      @ticket = Ticket.find(params[:ticket_id])
+      #@ticket = Ticket.find(params[:ticket_id])
       @time_entry = @ticket.time_entries.build
     else
       @time_entry = @project.time_entries.build
@@ -26,11 +26,30 @@ class TimeEntriesController < ApplicationController
   end
 
   def edit
-    #TODO
+    @time_entry = TimeEntry.find(params[:id])
+    @ticket = @time_entry.ticket
+    @project = @ticket.project
+  end
+
+  def update
+    @time_entry = TimeEntry.find(params[:id])
+    @ticket = @time_entry.ticket
+    @project = @ticket.project
+    if @time_entry.update_attributes(params[:time_entry])
+      @ticket = @time_entry.ticket
+      redirect_to ticket_time_entries_path(@ticket), notice: "Time Entry has been updated."
+    else
+      flash[:alert] = "Time Entry has not been updated."
+      render action: :edit
+    end
   end
 
   def destroy
-    #TODO
+    @time_entry = TimeEntry.find(params[:id])
+    @ticket = @time_entry.ticket
+    @project = @ticket.project
+    @time_entry.destroy
+    redirect_to ticket_time_entries_path(@ticket), notice: "Time Entry has been deleted."
   end
 
   private
@@ -39,7 +58,7 @@ class TimeEntriesController < ApplicationController
     if params[:ticket_id]
       @ticket = Ticket.find(params[:ticket_id])
       @project = @ticket.project
-    else
+    elsif params[:project_id]
       @project = Project.for(current_user).find(params[:project_id])
     end
   rescue ActiveRecord::RecordNotFound
