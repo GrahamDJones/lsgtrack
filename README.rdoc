@@ -5,12 +5,11 @@ Start of the project/time tracker
 
 Paginate permissions, update in groups...
 
-Implement simple_form
+Implement simple_form for most forms
 
+Implement bootstrap?
 
 Time reporting
-  -- Add permission to report time
-
-  -- Add time reporting against tasks (html)
-
+  -- paginate time list
+  -- Add hours list to project
   -- Add time reporting to the api
