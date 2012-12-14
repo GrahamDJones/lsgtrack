@@ -3,7 +3,12 @@ class TimeEntriesController < ApplicationController
   before_filter :find_project
 
   def new
-    @time_entry = @project.time_entries.build
+    if params[:ticket_id]
+      @ticket = Ticket.find(params[:ticket_id])
+      @time_entry = @ticket.time_entries.build
+    else
+      @time_entry = @project.time_entries.build
+    end
   end
 
   def create
@@ -19,7 +24,12 @@ class TimeEntriesController < ApplicationController
   private
 
   def find_project
-    @project = Project.for(current_user).find(params[:project_id])
+    if params[:ticket_id]
+      @ticket = Ticket.find(params[:ticket_id])
+      @project = @ticket.project
+    else
+      @project = Project.for(current_user).find(params[:project_id])
+    end
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "The project you were looking for could not be found."
   end

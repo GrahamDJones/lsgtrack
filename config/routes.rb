@@ -36,6 +36,7 @@ Lsgtrack::Application.routes.draw do
         delete :remove
       end
     end
+    resources :time_entries
   end
 
   resources :files

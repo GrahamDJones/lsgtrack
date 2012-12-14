@@ -1,7 +1,7 @@
 Feature: Entering time for projects
   In order to be able to enter time spent reports
   As a user
-  I want a simple form to make entries
+  I want a simple form to make entries accessible from the project page
 
   Background:
     Given there are the following users:
