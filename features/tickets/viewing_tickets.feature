@@ -26,7 +26,7 @@ Feature: Viewing tickets
     Then I should see "Make it shiny"
     And I should not see "Standards 101"
     When I follow "Make it shiny"
-    Then I should see "Make it shiny" within "#ticket h2"
+    Then I should see "Make it shiny" within "#ticket h3"
     And I should see "Gradients Starbursts! Oh My"
 
     When I follow "LSG Tracker"
@@ -34,5 +34,5 @@ Feature: Viewing tickets
     Then I should see "Standards 101"
     And I should not see "Make it shiny"
     When I follow "Standards 101"
-    Then I should see "Standards 101" within "#ticket h2"
+    Then I should see "Standards 101" within "#ticket h3"
     And I should see "This is not a joke"

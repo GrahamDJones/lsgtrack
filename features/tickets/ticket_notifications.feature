@@ -32,7 +32,7 @@ Feature: Ticket notifications
     And there should be a part with content type "text/html"
     And they should see "[LSG Tracker] Time Tracker - Release date" in the email subject
     Then they follow "view this ticket on line here" in the email
-    Then I should see "Release date" within "#ticket h2"
+    Then I should see "Release date" within "#ticket h3"
 
   Scenario: Comment authors are automatically subscribed to a ticket
     When I follow "Time Tracker"

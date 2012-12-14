@@ -1,9 +1,9 @@
 <% @title = title(@project.name, "Projects") %>
-<h2><%= "Project: " + @project.name %>
+<h3><%= "Project: " + @project.name %>
   <div class="floatright">
     <%= render :partial => "states/project_state", :locals => {state: @project.state} if @project.state %>
   </div>
-</h2>
+</h3>
 <div class="navlinks">
   <%= admins_only do %>
       <%= link_to 'Edit Project', edit_project_path(@project) %>
