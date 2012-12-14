@@ -21,6 +21,18 @@ class TimeEntriesController < ApplicationController
     end
   end
 
+  def index
+    @time_entries = @ticket.time_entries.order("work_date desc")
+  end
+
+  def edit
+    #TODO
+  end
+
+  def destroy
+    #TODO
+  end
+
   private
 
   def find_project

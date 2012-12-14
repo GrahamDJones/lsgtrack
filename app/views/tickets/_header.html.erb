@@ -11,6 +11,7 @@
   <%= authorized?("report time", @project) do %>
       <%= link_to 'Time Entry', new_ticket_time_entry_path(@ticket) %>
   <% end %>
+  <%= link_to 'Time Reported', ticket_time_entries_path(@ticket) %>
 
   <br>
   <small>Created by: <%= @ticket.user.email %></small>

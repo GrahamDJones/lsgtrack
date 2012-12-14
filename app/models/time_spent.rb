@@ -23,4 +23,8 @@ class TimeSpent
     end unless @duration.blank?
   end
 
+  def hhmm
+    "#{@duration/60}:#{"%02d" % (@duration%60)}"
+  end
+
 end

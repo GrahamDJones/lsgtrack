@@ -11,4 +11,12 @@ class TimeEntry < ActiveRecord::Base
     self.duration_minutes
   end
 
+  def duration_hhmm
+    TimeSpent.new(self.duration_minutes).hhmm
+  end
+
+  def to_s
+    "#{self.work_date}:#{self.user.name}:#{self.duration}"
+  end
+
 end

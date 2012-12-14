@@ -5,10 +5,10 @@ And /^"(.*?)" has created a ticket for this project:$/ do |email, table|
     tags = attributes.delete("tags")
     ticket_state = attributes.delete("state")
     attributes = attributes.merge!(user: User.find_by_email!(email))
-    ticket = @project.tickets.create!(attributes)
-    ticket.state = TicketState.find_or_create_by_name(ticket_state) if ticket_state
-    ticket.tag!(tags) if tags
-    ticket.save
+    @ticket = @project.tickets.create!(attributes)
+    @ticket.state = TicketState.find_or_create_by_name(ticket_state) if ticket_state
+    @ticket.tag!(tags) if tags
+    @ticket.save
   end
 end
 
