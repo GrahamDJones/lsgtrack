@@ -1,7 +1,7 @@
 <% @title = title(@project.name, "Projects") %>
 <h2><%= "Project: " + @project.name %>
   <div class="floatright">
-    <%= render :partial => "states/project_state", :locals => { state: @project.state } if @project.state %>
+    <%= render :partial => "states/project_state", :locals => {state: @project.state} if @project.state %>
   </div>
 </h2>
 <div class="navlinks">
@@ -14,7 +14,9 @@
       <%= link_to 'New Ticket', new_project_ticket_path(@project) %>
   <% end %>
   <%= authorized?("report time", @project) do %>
-      <%= link_to 'Time Entry', new_project_time_entry_path(@project) %>
+      <% unless @project.tickets.empty? %>
+          <%= link_to 'Time Entry', new_project_time_entry_path(@project) %>
+      <% end %>
   <% end %>
 </div>
 <%= form_tag search_project_tickets_path(@project), method: :get, class: "search" do %>
@@ -26,7 +28,7 @@
 <ul id="tickets">
   <% @tickets.each do |ticket| %>
       <li>
-        <%= render :partial => "states/ticket_state", :locals => { state: ticket.state } if ticket.state %>
+        <%= render :partial => "states/ticket_state", :locals => {state: ticket.state} if ticket.state %>
         #<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %>
       </li>
   <% end %>

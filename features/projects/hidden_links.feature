@@ -14,7 +14,9 @@ Feature: Hidden Links
     And "user@example.com" has created a ticket for this project:
       | title  | description                 |
       | Shiny! | Gradients Starbursts! Oh My |
+    And there is a project called "No Tickets"
     And "user@example.com" can view the "Time Tracker" project
+    And "user@example.com" can view the "No Tickets" project
 
   Scenario: New project link is hidden for not-signed in users
     Given I am on the homepage
@@ -109,3 +111,9 @@ Feature: Hidden Links
     And I follow "Users"
     And I follow "admin2@example.com"
     Then I should not see "Permissions"
+
+  Scenario: The Time Entry link is hidden for projects with no tickets
+    Given "user@example.com" can report time on the "No Tickets" project
+    Given I am signed in as "user@example.com"
+    When I follow "No Tickets"
+    Then I should not see "Time Entry"
