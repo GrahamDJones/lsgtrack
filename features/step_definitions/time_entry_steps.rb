@@ -5,3 +5,9 @@ And /^"(.*?)" has created a time entry for this ticket$/ do |email, table|
     time_entry.save
   end
 end
+
+And /^there are (\d+) time entries for this ticket$/ do |number|
+  number.to_i.times do |i|
+    @ticket.time_entries.create!(work_date: "2012-12-30", duration_minutes: 10, user: @user)
+  end
+end

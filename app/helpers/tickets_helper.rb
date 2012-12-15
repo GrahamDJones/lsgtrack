@@ -19,4 +19,8 @@ module TicketsHelper
            end
     button_to(text, watch_project_ticket_path(@ticket.project, @ticket))
   end
+
+  def toggle_ticket_view
+
+  end
 end

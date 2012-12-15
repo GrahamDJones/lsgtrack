@@ -10,6 +10,5 @@ Implement simple_form for most forms
 Implement bootstrap?
 
 Time reporting
-  -- paginate time list
   -- Add hours list to project
   -- Add time reporting to the api

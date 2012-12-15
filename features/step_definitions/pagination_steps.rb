@@ -19,3 +19,8 @@ Then /^I see page (\d+) of users$/ do |number|
   current_page = find(".pagination .current").text.strip
   current_page.should eql(number)
 end
+
+Then /^I see page (\d+) of times for this ticket$/ do |number|
+  current_page = find(".pagination .current").text.strip
+  current_page.should eql(number)
+end

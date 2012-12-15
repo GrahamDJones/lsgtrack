@@ -22,7 +22,7 @@ class TimeEntriesController < ApplicationController
   end
 
   def index
-    @time_entries = @ticket.time_entries.order("work_date desc")
+    @time_entries = @ticket.time_entries.order("work_date desc").page(params[:page])
   end
 
   def edit
