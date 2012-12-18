@@ -38,7 +38,6 @@ Feature: Editing time entries
     Then I should see "Time spent: 9 hours 50 minutes" within "#ticket #time_spent"
     And I follow "Edit" within "#access_time_entry_0"
     And I should see "Edit a time entry"
-    And I fill in "Date" with "12/31/2012"
     And I fill in "Duration" with "377"
     And I press "Save"
     Then I should see "Time Entry has been updated."

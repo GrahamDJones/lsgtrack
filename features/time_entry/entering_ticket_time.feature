@@ -21,9 +21,18 @@ Feature: Entering time for tickets
     And I follow "Time Tracker" within "#projects"
     And I follow "Work on this one" within "#tickets"
 
+  Scenario: Reporting time with missing date or duration not allowed
+    And I follow "Time Entry"
+    And I press "Save"
+    Then I should see "Time Entry has not been created."
+    And I should see "Date can't be blank"
+    And I should see "Duration can't be blank"
+
+    @javascript
   Scenario: Reporting time less than 1 hour for a ticket
     And I follow "Time Entry"
-    And I fill in "Date" with "12/15/2012"
+      And I select "Work on this one" from "time_entry_ticket_id"
+      And I fill in the date
     And I fill in "Duration" with "5"
     And I press "Save"
     Then I should see "Time Entry has been created."
