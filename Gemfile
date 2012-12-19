@@ -45,5 +45,5 @@ group :test, :development do
 end
 
 group :production do
-  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', "0.10.2", :platforms => :ruby
 end
