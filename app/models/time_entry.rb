@@ -5,7 +5,8 @@ class TimeEntry < ActiveRecord::Base
 
   validates :work_date, presence: { message: "Date can't be blank" }
   validates :ticket_id, presence: { message: "Ticket can't be blank" }
-  validate :duration_must_be_entered
+  validate :duration_must_be_present
+  validate :user_must_be_present
 
 
   def duration=(str)
@@ -26,8 +27,12 @@ class TimeEntry < ActiveRecord::Base
 
   private
 
-  def duration_must_be_entered
+  def duration_must_be_present
     errors.add(:duration, "Duration can't be blank") if self.duration.blank? && self.duration_minutes.blank?
+  end
+
+  def user_must_be_present
+    errors.add(:user, "User can't be blank") if self.user.blank?
   end
 
 end
