@@ -11,4 +11,5 @@ Implement bootstrap?
 
 Time reporting
   -- Add hours list to project
-  -- Add time reporting to the api
+
+Implement some sort of JS grid. ExtJS?
