@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
   # Include default devise modules. Others available are:
   # :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :async, :registerable,
@@ -18,6 +19,12 @@ class User < ActiveRecord::Base
 
   def to_s
     "#{name} (#{admin? ? "Admin" : "User"})"
+  end
+
+  def last_seen
+    return "Never" unless self.last_sign_in_at || self.current_sign_in_at
+    return time_ago_in_words(self.last_sign_in_at, include_seconds = false)+" ago" unless self.current_sign_in_at
+    time_ago_in_words(self.current_sign_in_at, include_seconds = false)+" ago"
   end
 
   private

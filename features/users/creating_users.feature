@@ -19,14 +19,14 @@ Background:
     And I fill in "Name" with "User Name"
     And I press "Create User"
     Then I should see "User has been created."
-    And I should see "User Name (User)"
+    And I should see "User Name"
 
   Scenario: Creating a new user name defaults to email
     And I fill in "Email" with "newbie@example.com"
     And I fill in "Password" with "password"
     And I press "Create User"
     Then I should see "User has been created."
-    And I should see "newbie@example.com (User)"
+    And I should see "newbie@example.com"
 
   Scenario: User must have an email
     And I fill in "Email" with ""
@@ -39,8 +39,9 @@ Background:
   Scenario: Creating an admin user
     And I fill in "Email" with "newadmin@example.com"
     And I fill in "Password" with "password"
-    And I fill in "Name" with "Admin Name"
+    And I fill in "Name" with "Powerful Name"
     And I check "Is an admin?"
     And I press "Create User"
     Then I should see "User has been created."
-    And I should see "Admin Name (Admin)"
+    And I should see "Powerful Name"
+    And I should see "Admin"

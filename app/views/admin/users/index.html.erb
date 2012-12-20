@@ -3,11 +3,28 @@
   <%= link_to "Project States", admin_project_states_path %>
   <%= link_to "New User", new_admin_user_path %>
 </div>
-<div>
-  <%= paginate @users %>
-  <ul id="users">
-    <% @users.each do |user| %>
-        <li><%= link_to user, [:admin, user] %></li>
-    <% end %>
-  </ul>
-</div>
+<%= paginate @users %>
+<br/>
+<table id="user_table">
+  <thead>
+  <th>Email</th>
+  <th>Name</th>
+  <th>Admin</th>
+  <th>Last Sign In</th>
+  <th>From IP</th>
+  <th>Times Signed In</th>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr class='<%= cycle("odd", "even") %>'>
+        <td><%= link_to user.email, [:admin, user] %></td>
+        <td><%= user.name %></td>
+        <td><%= "#{user.admin ? 'Admin' : ''}" %></td>
+        <td><%= user.last_seen  %></td>
+        <td><%= user.last_sign_in_ip %></td>
+        <td><%= user.sign_in_count %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
