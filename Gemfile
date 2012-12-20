@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'simple_form'
+gem 'dynamic_form', "~> 1.1.4"
 
 
 # Gems used only for assets and not required
@@ -20,7 +21,6 @@ gem 'simple_form'
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'dynamic_form', "~> 1.1.4"
   gem 'uglifier', '>= 1.0.3'
 end
 
