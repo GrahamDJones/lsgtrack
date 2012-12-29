@@ -1,53 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>
-    <% if content_for?(:title) %>
-      <%= yield(:title) %>
-    <% else %>
-      LSG Tracker
-    <% end %>
-  </title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <style>
-      <% for ticket_state in @ticket_states %>
-      .ticket_state_<%= ticket_state.name.parameterize %> {
-          background: <%= ticket_state.background %>;
-          color: <%= ticket_state.color %>;
-      }
-      <% end %>
-      <% for project_state in @project_states %>
-      .project_state_<%= project_state.name.parameterize %> {
-          background: <%= project_state.background %>;
-          color: <%= project_state.color %>;
-          font-size: 50%;
-      }
-      <% end %>
-  </style>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<% flash.each do |key, value| %>
-  <div class="flash" id='<%= key %>'>
-    <%= value %>
-  </div>
-<% end %>
-<h1><%= link_to "LSG Tracker", root_path %></h1>
-
-<nav>
-  <%= admins_only do %>
-    <%= link_to "Admin", admin_root_path %>
-  <% end %>
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'sign_out' %>
-  <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
-</nav>
-
-<%= yield %>
-</body>
+  <head>
+    <%= render "layouts/window_title" %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= render "layouts/dynamic_styles" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "layouts/notices" %>
+    <%= render "layouts/page_header" %>
+    <%= yield %>
+    <%= render "layouts/page_footer" %>
+  </body>
 </html>

@@ -1,2 +1,4 @@
-<h3>New Time entry for project: <%= @project.name %></h3>
-<%= render "form" %>
+<section id="time_entry">
+  <h3>New Time entry for project: <%= link_to @project.name, @project %></h3>
+  <%= render "form" %>
+</section>

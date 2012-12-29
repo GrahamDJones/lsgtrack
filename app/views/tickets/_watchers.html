@@ -1,9 +1,12 @@
-<div id="watchers">
-    <%= toggle_watching_button %>
+<section id="ticket_watchers">
     <h4>Watchers</h4>
-    <ul>
-        <% @ticket.watchers.each do |watcher| %>
-        <li id="awatcher"><%= watcher %></li>
-        <% end %>
-    </ul>
-</div>
+
+    <div id="watchers">
+        <%= toggle_watching_button %>
+        <ul id="watcher_list">
+            <% @ticket.watchers.each do |watcher| %>
+            <li id="awatcher"><%= watcher %></li>
+            <% end %>
+        </ul>
+    </div>
+</section>

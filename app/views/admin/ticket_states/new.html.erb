@@ -1,5 +1,7 @@
-<h1>New Ticket State</h1>
-<%= form_for [:admin, @ticket_state] do |f| %>
-    <%= render "fields", f: f %>
-    <%= f.submit "Create Ticket State" %>
-<% end %>
+<section id="ticket_state">
+  <h1>New Ticket State</h1>
+  <%= form_for [:admin, @ticket_state] do |f| %>
+      <%= render "fields", f: f %>
+      <%= f.submit "Create Ticket State" %>
+  <% end %>
+</section>

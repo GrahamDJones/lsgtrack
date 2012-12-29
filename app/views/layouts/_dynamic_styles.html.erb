@@ -1,0 +1,15 @@
+<style>
+    <% for ticket_state in @ticket_states %>
+    .ticket_state_<%= ticket_state.name.parameterize %> {
+        background: <%= ticket_state.background %>;
+        color: <%= ticket_state.color %>;
+    }
+    <% end %>
+    <% for project_state in @project_states %>
+    .project_state_<%= project_state.name.parameterize %> {
+        background: <%= project_state.background %>;
+        color: <%= project_state.color %>;
+        font-size: 50%;
+    }
+    <% end %>
+</style>

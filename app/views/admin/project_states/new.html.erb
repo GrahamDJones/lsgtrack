@@ -1,5 +1,7 @@
-<h1>New Project State</h1>
-<%= form_for [:admin, @project_state] do |f| %>
-    <%= render "fields", f: f %>
-    <%= f.submit "Create Project State" %>
-<% end %>
+<section id="project_state">
+  <h1>New Project State</h1>
+  <%= form_for [:admin, @project_state] do |f| %>
+      <%= render "fields", f: f %>
+      <%= f.submit "Create Project State" %>
+  <% end %>
+</section>

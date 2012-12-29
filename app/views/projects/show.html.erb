@@ -1,35 +1,37 @@
-<% @title = title(@project.name, "Projects") %>
-<h3><%= "Project: " + @project.name %>
-  <div class="floatright">
-    <%= render :partial => "states/project_state", :locals => {state: @project.state} if @project.state %>
+<section id="project">
+  <% @title = title(@project.name, "Projects") %>
+  <h3><%= "Project: " + @project.name %>
+    <div class="floatright">
+      <%= render :partial => "states/project_state", :locals => {state: @project.state} if @project.state %>
+    </div>
+  </h3>
+  <div class="navlinks">
+    <%= admins_only do %>
+        <%= link_to 'Edit Project', edit_project_path(@project) %>
+        <%= link_to 'Delete Project', @project, method: :delete,
+                    confirm: "Are you sure you want to delete this project?" %>
+    <% end %>
+    <%= authorized?("create tickets", @project) do %>
+        <%= link_to 'New Ticket', new_project_ticket_path(@project) %>
+    <% end %>
+    <%= authorized?("report time", @project) do %>
+        <% unless @project.tickets.empty? %>
+            <%= link_to 'Time Entry', new_project_time_entry_path(@project) %>
+        <% end %>
+    <% end %>
   </div>
-</h3>
-<div class="navlinks">
-  <%= admins_only do %>
-      <%= link_to 'Edit Project', edit_project_path(@project) %>
-      <%= link_to 'Delete Project', @project, method: :delete,
-                  confirm: "Are you sure you want to delete this project?" %>
+  <%= form_tag search_project_tickets_path(@project), method: :get, class: "search" do %>
+      <%= label_tag "Search for" %>
+      <%= text_field_tag "search", params[:search] %>
+      <%= submit_tag "Search" %>
   <% end %>
-  <%= authorized?("create tickets", @project) do %>
-      <%= link_to 'New Ticket', new_project_ticket_path(@project) %>
-  <% end %>
-  <%= authorized?("report time", @project) do %>
-      <% unless @project.tickets.empty? %>
-          <%= link_to 'Time Entry', new_project_time_entry_path(@project) %>
-      <% end %>
-  <% end %>
-</div>
-<%= form_tag search_project_tickets_path(@project), method: :get, class: "search" do %>
-    <%= label_tag "search" %>
-    <%= text_field_tag "search", params[:search] %>
-    <%= submit_tag "Search" %>
-<% end %>
-<%= paginate @tickets %>
-<ul id="tickets">
-  <% @tickets.each do |ticket| %>
-      <li>
-        <%= render :partial => "states/ticket_state", :locals => {state: ticket.state} if ticket.state %>
-        #<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %>
-      </li>
-  <% end %>
-</ul>
+  <%= paginate @tickets %>
+  <ul id="tickets">
+    <% @tickets.each do |ticket| %>
+        <li>
+          <%= render :partial => "states/ticket_state", :locals => {state: ticket.state} if ticket.state %>
+          #<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %>
+        </li>
+    <% end %>
+  </ul>
+</section>

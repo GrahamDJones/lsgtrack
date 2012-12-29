@@ -27,21 +27,21 @@ Feature: Searching tags
     And I follow "Time Tracker" within "#projects"
 
   Scenario: Finding by tag
-    When I fill in "Search" with "tag:iteration_1"
+    When I fill in "search" with "tag:iteration_1"
     And I press "Search"
     Then I should see "Tag!"
     And I should not see "Tagged!"
     And I should not see "Found!"
 
   Scenario: Finding by ticket state
-    When I fill in "Search" with "state:Open"
+    When I fill in "search" with "state:Open"
     And I press "Search"
     Then I should see "Tag!"
     And I should see "Found!"
     And I should not see "Tagged!"
 
   Scenario: Finding by ticket state or has tag
-    When I fill in "Search" with "state:Open tag:find"
+    When I fill in "search" with "state:Open tag:find"
     And I press "Search"
     Then I should see "Found!"
     And I should not see "Tag!"
@@ -55,7 +55,7 @@ Feature: Searching tags
     And I should not see "Found!"
 
   Scenario: Invalid search entry fails gracefully
-    When I fill in "Search" with "badstuff"
+    When I fill in "search" with "badstuff"
     And I press "Search"
     Then I should see "Could not find tickets with tag:xxx or state:yyy"
 

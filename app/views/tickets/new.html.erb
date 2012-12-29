@@ -1,2 +1,4 @@
-<h3>New Ticket for project: <%= @project.name %></h3>
-<%= render "form" %>
+<section id="project">
+  <h3>New ticket for project: <%= link_to @project.name, @project %></h3>
+  <%= render "form" %>
+</section>

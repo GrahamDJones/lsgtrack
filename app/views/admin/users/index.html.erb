@@ -1,10 +1,9 @@
 <div class="navlinks">
-  <%= link_to "States", admin_ticket_states_path %>
+  <%= link_to "Ticket States", admin_ticket_states_path %>
   <%= link_to "Project States", admin_project_states_path %>
   <%= link_to "New User", new_admin_user_path %>
 </div>
 <%= paginate @users %>
-<br/>
 <table id="user_table">
   <thead>
   <th>Email</th>

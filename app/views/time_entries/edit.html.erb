@@ -1,2 +1,4 @@
-<h3>Edit a time entry in Ticket: <%= @ticket.title %> in Project: <%= @project.name %></h3>
-<%= render "form" %>
+<section id="time_entry">
+  <h3>Edit a time entry in Ticket: <%= link_to @ticket.title, @ticket %> in Project: <%= link_to @project.name, @project %></h3>
+  <%= render "form" %>
+</section>
