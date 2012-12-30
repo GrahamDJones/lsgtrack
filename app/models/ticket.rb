@@ -8,7 +8,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
   attr_accessible :description, :title, :user, :assets_attributes
   validates :title, presence: true
-  validates :description, presence: true, length: { minimum: 10}
+  validates :description, presence: true, length: {minimum: 10}
 
   has_many :assets
   accepts_nested_attributes_for :assets
@@ -21,10 +21,12 @@ class Ticket < ActiveRecord::Base
   after_create :creator_watches_me
 
   def tag!(tags)
-    tags = tags.split(" ").map do |tag|
-      Tag.find_or_create_by_name(tag)
+    if tags
+      tags = tags.split(" ").map do |tag|
+        Tag.find_or_create_by_name(tag)
+      end
+      self.tags << tags
     end
-    self.tags << tags
   end
 
   def time_spent_str

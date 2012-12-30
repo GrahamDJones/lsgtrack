@@ -29,7 +29,7 @@ Background:
     And I should see "new.email@example.com"
 
   Scenario: Toggle a user's admin ability
-    When I check "Is an admin?"
+    When I check "user_admin"
     And I press "Update User"
     Then I should see "User has been updated."
     And I should see "user@example.com"

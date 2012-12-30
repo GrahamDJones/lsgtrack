@@ -115,6 +115,21 @@ input[type=submit] {
 input[type=file] {
   margin: 5px;
 }
+input[type=checkbox], input[type=radio] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+  border: 0px;
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 3px;
+  margin-left: 165px;
+}
+input[type=radio] {
+  bottom: 2px;
+}
 
 select {
   width: auto;
@@ -267,7 +282,7 @@ menu, #ticket .state, .states {
   padding: 3px;
 }
 
-#ticket #tags {
+div#tags {
   margin-top: 20px;
 }
 
