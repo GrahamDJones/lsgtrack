@@ -2,7 +2,7 @@
 <%= form_for [@ticket, @comment] do |f| %>
     <%= f.error_messages %>
     <p>
-      <%= f.label :text %><br/>
+      <%= f.label :text %>
       <%= f.text_area :text, rows: 10 %>
     </p>
     <% authorized?(:"change ticket states", @project) do %>

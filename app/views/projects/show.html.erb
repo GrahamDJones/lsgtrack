@@ -21,9 +21,11 @@
     <% end %>
   </div>
   <%= form_tag search_project_tickets_path(@project), method: :get, class: "search" do %>
+      <p>
       <%= label_tag "Search for" %>
       <%= text_field_tag "search", params[:search] %>
       <%= submit_tag "Search" %>
+      </p>
   <% end %>
   <%= paginate @tickets %>
   <ul id="tickets">

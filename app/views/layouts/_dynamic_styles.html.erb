@@ -3,6 +3,7 @@
     .ticket_state_<%= ticket_state.name.parameterize %> {
         background: <%= ticket_state.background %>;
         color: <%= ticket_state.color %>;
+        font-size: 75%;
     }
     <% end %>
     <% for project_state in @project_states %>
