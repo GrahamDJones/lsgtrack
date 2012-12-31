@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   before_save :default_name
 
-  def self.reset_request_count!
-    update_all("request_count = 0", "request_count > 0")
-  end
-
   def to_s
     "#{name} (#{admin? ? "Admin" : "User"})"
   end

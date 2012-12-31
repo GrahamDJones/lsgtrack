@@ -5,11 +5,9 @@ Start of the project/time tracker
 
 Paginate permissions, update in groups...
 
-Implement simple_form for most forms
-
-Implement bootstrap?
-
 Time reporting
   -- Add hours list to project
 
 Implement some sort of JS grid. ExtJS?
+
+Edit ticket should bring existing tags for edit
