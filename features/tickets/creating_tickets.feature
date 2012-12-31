@@ -12,6 +12,8 @@ Feature: Creating tickets
       | user@example.com | password |
     And "user@example.com" can view the "Internet Explorer" project
     And "user@example.com" can create tickets in the "Internet Explorer" project
+    And "user@example.com" can edit tickets in the "Internet Explorer" project
+    And "user@example.com" can tag the "Internet Explorer" project
     And I am signed in as them
     And I am on the homepage
     When I follow "Internet Explorer"
@@ -53,7 +55,6 @@ Feature: Creating tickets
 #    When I follow "speed.txt"
 
   Scenario: Creating a ticket with tags
-    Given "user@example.com" can tag the "Internet Explorer" project
     When I fill in "Title" with "Non-standards compliance"
     And I fill in "Description" with "My pages are ugly!"
     And I fill in "Tags" with "browser visual"

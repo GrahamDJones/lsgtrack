@@ -127,6 +127,9 @@ input[type=checkbox], input[type=radio] {
   padding: 3px;
   margin-left: 165px;
 }
+td input[type=checkbox], td input[type=radio] {
+  margin-left: 0px;
+}
 input[type=radio] {
   bottom: 2px;
 }
