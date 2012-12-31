@@ -11,3 +11,5 @@ Time reporting
 Implement some sort of JS grid. ExtJS?
 
 Edit ticket should bring existing tags for edit
+
+Add real rate limiting for API
