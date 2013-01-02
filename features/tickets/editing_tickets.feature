@@ -12,6 +12,7 @@ Feature: Editing tickets
     Given there is a project called "Time Tracker"
     And "user@example.com" can view the "Time Tracker" project
     And "user@example.com" can edit tickets in the "Time Tracker" project
+    And "user@example.com" can tag the "Time Tracker" project
     And "user@example.com" has created a ticket for this project:
       | title         | description                    |
       | Make it shiny | Gradients Starbursts! Oh My    |
@@ -22,9 +23,11 @@ Feature: Editing tickets
 
   Scenario: Updating a ticket
     When I fill in "Title" with "Make it really shiny"
+    And I fill in "Tags" with "Many tags make light work"
     And I press "Update Ticket"
     Then I should see "Ticket has been updated."
     And I should see "Make it really shiny" within "#ticket h3"
+    And I should see "light" within "div#tags"
     But I should not see "Make it shiny"
 
   Scenario: Updating a ticket with invalid info

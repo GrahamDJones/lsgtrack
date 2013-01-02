@@ -9,6 +9,7 @@
       <%= f.text_area :description, rows: 10 %>
     </p>
     <% if current_user.admin? || can?(:tag, @project) %>
+        <% params[:tags] = @ticket.tags.inject(ts="") { |ts,t| ts += t.name + " " }.strip %>
         <%= render "tags/form" %>
     <% end %>
     <% number = 0 %>

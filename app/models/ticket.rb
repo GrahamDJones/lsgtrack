@@ -21,8 +21,9 @@ class Ticket < ActiveRecord::Base
   after_create :creator_watches_me
 
   def tag!(tags)
+    self.tags.delete_all
     if tags
-      tags = tags.split(" ").map do |tag|
+      tags = tags.split.uniq.map do |tag|
         Tag.find_or_create_by_name(tag)
       end
       self.tags << tags
