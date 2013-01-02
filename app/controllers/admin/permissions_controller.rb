@@ -6,15 +6,14 @@ class Admin::PermissionsController < ApplicationController
     if @user.admin?
       @projects = []
     else
-      @projects = Project.all
-      #@projects = Project.state_not_admin
+      @projects = Project.state_not_admin.page(params[:page]).per(10)
     end
   end
 
   def update
-    @user.permissions.clear
     params[:permissions].each do |id, permissions|
       project = Project.find(id)
+      project.permissions.where(user_id: @user.id).each {|p| p.delete}
       permissions.each do |permission, checked|
         Permission.create!(user: @user, thing: project, action: permission)
       end

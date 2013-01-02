@@ -5,14 +5,14 @@ class Project < ActiveRecord::Base
 
   belongs_to :state
   has_many :tickets, dependent: :destroy, order: "created_at DESC"
-  has_many :permissions, as: :thing
+  has_many :permissions, as: :thing, dependent: :delete_all
   has_many :time_entries, through: :tickets, dependent: :destroy
 
   scope :readable_by, lambda { |user|
-    joins(:permissions).where(permissions: {action: "view", user_id: user.id})
+    joins(:permissions).where(permissions: {action: "view", user_id: user.id}).order("projects.name")
   }
 
-  scope :state_not_admin, joins(:state).where(states: {is_admin_only: false})
+  scope :state_not_admin, joins(:state).where(states: {is_admin_only: false}).order("projects.name")
 
   before_create :set_default_state
 

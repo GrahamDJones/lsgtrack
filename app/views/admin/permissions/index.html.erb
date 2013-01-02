@@ -1,5 +1,6 @@
 <h3>Permissions for <%= @user %></h3>
 <%= form_tag update_user_permissions_path, :method => :put do %>
+    <%= paginate @projects %>
     <table id="permissions">
       <thead>
       <th>Project</th>
