@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     time_ago_in_words(self.current_sign_in_at, include_seconds = false)+" ago"
   end
 
+  def confirm
+    self.confirmed_at ? true : false
+  end
+
   private
 
   def default_name

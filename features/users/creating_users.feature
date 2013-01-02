@@ -13,13 +13,34 @@ Background:
   And I follow "Users"
   When I follow "New User"
 
-  Scenario: Creating a new user
+  Scenario: Creating a new user not requiring confirmation
+    And I fill in "Email" with "newbie@example.com"
+    And I fill in "Password" with "password"
+    And I fill in "Name" with "User Name"
+    And I check "user_confirm"
+    And I press "Create User"
+    Then I should see "User has been created."
+    And I should see "User Name"
+    And I follow "Sign out"
+
+    Given I am signed in as "newbie@example.com"
+    Then I should see "Signed in as"
+
+  Scenario: Creating a new user requiring confirmation
     And I fill in "Email" with "newbie@example.com"
     And I fill in "Password" with "password"
     And I fill in "Name" with "User Name"
     And I press "Create User"
     Then I should see "User has been created."
     And I should see "User Name"
+    And I follow "Sign out"
+
+    Given I am on the homepage
+    When I follow "Sign in"
+    And I fill in "Email" with "newbie@example.com"
+    And I fill in "Password" with "password"
+    And I press "Sign in"
+    Then I should see "You have to confirm your account before continuing."
 
   Scenario: Creating a new user name defaults to email
     And I fill in "Email" with "newbie@example.com"

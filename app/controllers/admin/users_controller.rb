@@ -11,8 +11,10 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     admin = get_admin
+    confirm = get_confirm
     @user = User.new(params[:user])
     @user.admin = admin
+    @user.confirm! if confirm
     if @user.save
       redirect_to admin_users_path, notice: "User has been created."
     else
@@ -33,7 +35,13 @@ class Admin::UsersController < Admin::BaseController
       params[:user].delete(:password_confirmation)
     end
     @user.admin = get_admin
+    confirm = get_confirm
     @user.update_attributes(params[:user])
+    if confirm
+      @user.confirm!
+    else
+      @user.confirmed_at = nil
+    end
     if @user.save
       redirect_to admin_users_path, notice: "User has been updated."
     else
@@ -60,5 +68,9 @@ class Admin::UsersController < Admin::BaseController
 
   def get_admin
     params[:user].delete(:admin) == "1"
+  end
+
+  def get_confirm
+    params[:user].delete(:confirm) == "1"
   end
 end

@@ -3,7 +3,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   before_filter :find_project, only: [:show, :update, :destroy]
 
   def index
-    respond_with(Project.for(current_user))
+    respond_with(Project.for(current_user).all)
   end
 
   def create
