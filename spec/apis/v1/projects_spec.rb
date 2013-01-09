@@ -21,10 +21,10 @@ describe "/api/v1/projects", type: :api do
       response.status.should eql(200)
       projects = JSON.parse(response.body)
       projects.any? do |p|
-        p["project"]["name"] == @project.name
+        p["name"] == @project.name
       end.should be_true
       projects.any? do |p|
-        p["project"]["name"] == @project2.name
+        p["name"] == @project2.name
       end.should be_false
     end
 
@@ -73,8 +73,10 @@ describe "/api/v1/projects", type: :api do
       project = @project.to_json(methods: "last_ticket")
       response.body.should eql(project)
       response.status.should eql(200)
-      project_response = JSON.parse(response.body)["project"]
-      ticket_title = project_response["last_ticket"]["ticket"]["title"]
+      #print " ***** #{response.body} \n"
+      project_response = JSON.parse(response.body)
+      #print " ***** #{project_response.inspect} \n"
+      ticket_title = project_response["last_ticket"]["title"]
       ticket_title.should_not be_blank
     end
   end

@@ -10,6 +10,11 @@ Then /^I see page (\d+) of tickets for this project$/ do |number|
   current_page.should eql(number)
 end
 
+Then /^I see page (\d+) of permissions for this user$/ do |number|
+  current_page = find(".pagination .current").text.strip
+  current_page.should eql(number)
+end
+
 Then /^I see page (\d+) of projects$/ do |number|
   current_page = find(".pagination .current").text.strip
   current_page.should eql(number)
