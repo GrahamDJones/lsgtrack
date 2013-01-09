@@ -3,8 +3,6 @@ Start of the project/time tracker
 
 #TODO -- in no particular order
 
-Paginate permissions, update in groups...
-
 Time reporting
   -- Add hours list to project
 
