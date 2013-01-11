@@ -20,12 +20,12 @@ describe "/api/v1/tickets", type: :api do
 
     it "XML" do
       get "#{url}.xml", token: token
-      response.body.should eql(project.tickets.to_xml)
+      last_response.body.should eql(project.tickets.to_xml)
     end
 
     it "JSON" do
       get "#{url}.json", token: token
-      response.body.should eql(project.tickets.to_json)
+      last_response.body.should eql(project.tickets.to_json)
     end
   end
 

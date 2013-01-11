@@ -9,8 +9,8 @@ describe "Project API errors", type: :api do
            token: user.authentication_token,
            project: {name: "Not Good"}
       error = {error: "You must be an admin to do that."}
-      response.body.should eql(error.to_json)
-      response.status.should eql(401)
+      last_response.body.should eql(error.to_json)
+      last_response.status.should eql(401)
       Project.find_by_name("Not Good").should be_nil
     end
 
@@ -19,8 +19,8 @@ describe "Project API errors", type: :api do
       get "/api/v1/projects/#{project.id}.json",
            token: user.authentication_token
       error = { error: "The project you were looking for could not be found." }
-      response.status.should eql(404)
-      response.body.should eql(error.to_json)
+      last_response.status.should eql(404)
+      last_response.body.should eql(error.to_json)
     end
   end
 end

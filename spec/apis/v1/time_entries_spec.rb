@@ -22,16 +22,16 @@ describe "/api/v1/time_entries", type: :api do
       time_entry = project.time_entries.first
       route = "/api/v1/time_entries/#{time_entry.id}"
 
-      response.status.should eql(201)
-      response.headers["Location"].should eql(route)
-      response.body.should eql(time_entry.to_json)
+      last_response.status.should eql(201)
+      last_response.headers["Location"].should eql(route)
+      last_response.body.should eql(time_entry.to_json)
     end
 
     it "unsuccessful json" do
       post "#{url}.json", token: token, time_entry: {}
 
-      response.status.should eql(422)
-      response.body.should eql({"errors" => {"work_date" => ["Date can't be blank"],
+      last_response.status.should eql(422)
+      last_response.body.should eql({"errors" => {"work_date" => ["Date can't be blank"],
                                              "ticket_id" => ["Ticket can't be blank"],
                                              "duration" => ["Duration can't be blank"],
                                              "user" => ["User can't be blank"]}}.to_json)
